@@ -7,7 +7,7 @@ import com.example.android_mvvm_best_pratices.ui.component.base.BaseActivity
 class LoginActivity : BaseActivity() {
     lateinit var binding: ActivityLoginBinding
     override fun observeViewModel() {
-        TODO("Not yet implemented")
+//        TODO("Not yet implemented")
     }
 
     override fun initViewBinding() {

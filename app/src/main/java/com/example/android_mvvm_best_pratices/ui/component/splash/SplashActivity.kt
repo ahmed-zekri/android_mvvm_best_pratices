@@ -20,7 +20,8 @@ class SplashActivity : BaseActivity() {
     }
 
     override fun initViewBinding() {
-        TODO("No implementation required")
+       // TODO("No implementation required")
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
