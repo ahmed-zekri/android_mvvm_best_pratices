@@ -1,7 +1,10 @@
 package com.example.android_mvvm_best_pratices.data.remote
 
+import com.example.android_mvvm_best_pratices.BASE_URL
 import com.example.android_mvvm_best_pratices.BuildConfig
+import com.example.android_mvvm_best_pratices.data.remote.moshiFactories.MyStandardJsonAdapters
 import com.squareup.moshi.Moshi
+import com.task.data.remote.moshiFactories.MyKotlinJsonAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,7 +23,7 @@ private const val timeoutConnect = 30   //In seconds
 @Singleton
 class ServiceGenerator @Inject constructor() {
     private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
-//    private val retrofit: Retrofit
+    private val retrofit: Retrofit
 
     private var headerInterceptor = Interceptor { chain ->
         val original = chain.request()
@@ -42,7 +45,7 @@ class ServiceGenerator @Inject constructor() {
             return loggingInterceptor
         }
 
- /*   init {
+    init {
         okHttpBuilder.addInterceptor(headerInterceptor)
         okHttpBuilder.addInterceptor(logger)
         okHttpBuilder.connectTimeout(timeoutConnect.toLong(), TimeUnit.SECONDS)
@@ -63,5 +66,5 @@ class ServiceGenerator @Inject constructor() {
             .add(MyKotlinJsonAdapterFactory())
             .add(MyStandardJsonAdapters.FACTORY)
             .build()
-    }*/
+    }
 }
