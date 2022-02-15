@@ -29,5 +29,5 @@
     <string name="add_to_favorite">Add to favorite</string>
     <string name="test_password">ahmed</string>
     <string name="test_email">ahmed@ahmed.ahmed</string>
-    <string name="search_error"><![CDATA[<string name=\"search_error\">there is no such recipe name</string>]]></string>
+    <string name="search_error"> there is no such recipe name </string>
 </resources>
