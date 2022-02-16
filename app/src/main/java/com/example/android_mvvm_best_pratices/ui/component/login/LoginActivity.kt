@@ -1,11 +1,15 @@
 package com.example.android_mvvm_best_pratices.ui.component.login
 
-import android.os.Bundle
+import androidx.activity.viewModels
 import com.example.android_mvvm_best_pratices.databinding.ActivityLoginBinding
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : BaseActivity() {
     lateinit var binding: ActivityLoginBinding
+
+    private val viewModel: LoginViewModel by viewModels()
     override fun observeViewModel() {
 //        TODO("Not yet implemented")
     }
@@ -13,10 +17,9 @@ class LoginActivity : BaseActivity() {
     override fun initViewBinding() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        binding.loginViewModel = viewModel
 
     }
+
+
 }

@@ -13,7 +13,8 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val dataRepository: DataRepository) :
     BaseViewModel() {
-
+    var userName: String = "cdscsxc"
+    var password: String = "sd"
     fun doRegister(registerRequest: RegisterRequest) {
 
         viewModelScope.launch { dataRepository.doRegister(registerRequest) }
