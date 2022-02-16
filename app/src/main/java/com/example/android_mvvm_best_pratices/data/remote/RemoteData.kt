@@ -1,6 +1,8 @@
 package com.example.android_mvvm_best_pratices.data.remote
 
-import com.example.android_mvvm_best_pratices.data.dto.RegisterRequest
+import com.example.android_mvvm_best_pratices.data.Resource
+import com.example.android_mvvm_best_pratices.data.dto.authentication.RegisterRequest
+import com.example.android_mvvm_best_pratices.data.dto.user.User
 import com.example.android_mvvm_best_pratices.data.error.NETWORK_ERROR
 import retrofit2.Response
 import java.io.IOException
@@ -8,15 +10,17 @@ import javax.inject.Inject
 
 class RemoteData @Inject
 constructor(private val serviceGenerator: ServiceGenerator) : RemoteDataSource {
-    override suspend fun register(registerRequest: RegisterRequest): Any? {
-        val service = serviceGenerator.createService(APIService::class.java)
-        return processCall {
+    override suspend fun register(registerRequest: RegisterRequest): Resource<User> {
+        val service = serviceGenerator.createService(APIAuthService::class.java)
+        return when (val response = processCall {
             service.register(
-                registerRequest.email,
-                registerRequest.password,
-                registerRequest.role
+                registerRequest
             )
+        }) {
+            is User -> Resource.Success(data = response)
+            else -> Resource.DataError(errorCode = response as Int)
         }
+
 
     }
 
