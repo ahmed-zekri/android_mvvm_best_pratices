@@ -4,8 +4,6 @@ import com.example.android_mvvm_best_pratices.data.dto.RegisterRequest
 import com.example.android_mvvm_best_pratices.data.remote.RemoteData
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-
-import java.util.concurrent.Flow
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
