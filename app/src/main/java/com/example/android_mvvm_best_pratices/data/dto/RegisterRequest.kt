@@ -1,3 +1,15 @@
 package com.example.android_mvvm_best_pratices.data.dto
 
-data class RegisterRequest(val email: String, val password: String, val role: String)
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
+
+class RegisterRequest   {
+
+    var email = "dsqsqdsqd"
+
+
+    var password = "********"
+
+
+    var role = ""
+}

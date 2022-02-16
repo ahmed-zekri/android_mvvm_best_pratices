@@ -18,6 +18,7 @@ class LoginActivity : BaseActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.loginViewModel = viewModel
+        binding.lifecycleOwner = this
 
     }
 
