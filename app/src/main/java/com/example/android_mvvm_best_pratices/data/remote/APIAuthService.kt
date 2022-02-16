@@ -10,6 +10,6 @@ import retrofit2.http.POST
 interface APIAuthService {
 
     @POST("auth/signup")
-    suspend fun register(@Body registerRequest: RegisterRequest): Response<Resource<User>>
+    suspend fun register(@Body registerRequest: RegisterRequest): Response<User>
 
 }
