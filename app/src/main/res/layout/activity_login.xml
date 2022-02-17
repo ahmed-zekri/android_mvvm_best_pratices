@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,9 +11,7 @@
             type="com.example.android_mvvm_best_pratices.ui.component.login.LoginViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.component.login.LoginActivity">
@@ -19,6 +19,7 @@
         <ProgressBar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:visibility="@{loginViewModel.registerStatus.loading}" />
 
         <EditText
@@ -66,5 +67,16 @@
             app:layout_constraintEnd_toEndOf="@id/username"
             app:layout_constraintStart_toStartOf="@id/username"
             app:layout_constraintTop_toBottomOf="@id/email" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="@{loginViewModel.registerStatus.data==null? loginViewModel.registerStatus.message:loginViewModel.registerStatus.data.username+ ` created successfully` }"
+            android:textColor="@{loginViewModel.registerStatus.data==null?@color/red:@color/black}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

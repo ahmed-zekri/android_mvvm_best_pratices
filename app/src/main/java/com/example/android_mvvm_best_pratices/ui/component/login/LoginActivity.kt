@@ -1,5 +1,6 @@
 package com.example.android_mvvm_best_pratices.ui.component.login
 
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.android_mvvm_best_pratices.databinding.ActivityLoginBinding
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseActivity
@@ -11,7 +12,7 @@ class LoginActivity : BaseActivity() {
 
     private val viewModel: LoginViewModel by viewModels()
     override fun observeViewModel() {
-//        TODO("Not yet implemented")
+ 
     }
 
     override fun initViewBinding() {
@@ -19,10 +20,7 @@ class LoginActivity : BaseActivity() {
         setContentView(binding.root)
         binding.loginViewModel = viewModel
         binding.lifecycleOwner = this
-        viewModel.registerStatus.observe(this) {
 
-
-        }
     }
 
 
