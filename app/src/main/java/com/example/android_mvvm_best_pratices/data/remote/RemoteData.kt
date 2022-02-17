@@ -1,5 +1,7 @@
 package com.example.android_mvvm_best_pratices.data.remote
 
+import com.example.android_mvvm_best_pratices.ERROR_DELIMITER
+import com.example.android_mvvm_best_pratices.NO_INTERNET_CONNECTION_ERROR
 import com.example.android_mvvm_best_pratices.data.Resource
 import com.example.android_mvvm_best_pratices.data.dto.authentication.RegisterRequest
 import com.example.android_mvvm_best_pratices.data.dto.user.User
@@ -18,7 +20,17 @@ constructor(private val serviceGenerator: ServiceGenerator) : RemoteDataSource {
             )
         }) {
             is User -> Resource.Success(data = response)
-            else -> Resource.DataError(errorCode = response as Int)
+            is Int -> Resource.InternetError(
+                error = response,
+                message = NO_INTERNET_CONNECTION_ERROR
+            )
+            else -> {
+                response as String
+                Resource.ServerError(
+                    error = response.split(ERROR_DELIMITER)[0].toInt(),
+                    message = response.split(ERROR_DELIMITER)[1]
+                )
+            }
         }
 
 
@@ -31,7 +43,7 @@ constructor(private val serviceGenerator: ServiceGenerator) : RemoteDataSource {
             val responseCode = response.code()
             if (response.isSuccessful)
                 response.body()
-            else responseCode
+            else responseCode.toString() + ERROR_DELIMITER + response.errorBody()?.string()
         } catch (e: IOException) {
             NETWORK_ERROR
 
