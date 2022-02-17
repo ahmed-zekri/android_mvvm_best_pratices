@@ -1,4 +1,4 @@
-package com.example.android_mvvm_best_pratices.ui.component.login
+package com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.login
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

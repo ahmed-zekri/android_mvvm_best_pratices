@@ -8,4 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#E91E63</color>
+    <color name="color_click_overlay">#555555</color>
+    <color name="color_primary_dark">#000000</color>
+    <color name="color_primary">#000000</color>
+    <color name="color_accent">#000000</color>
+    <color name="bank2_log_in_activity_button_button_background_color">#EFF2F6</color>
 </resources>

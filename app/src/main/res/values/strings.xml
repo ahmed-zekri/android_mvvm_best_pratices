@@ -7,6 +7,10 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+
+    <!-- Resources for Bank2LogInActivity -->
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
+    <string name="welcom_back_log_in_to_continue_with_ronnystudio_ui_for_android">Welcome back. Log in to continue </string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="splash_image">Splash image</string>
@@ -31,4 +35,5 @@
     <string name="test_email">ahmed@ahmed.ahmed</string>
     <string name="search_error"> there is no such recipe name </string>
     <string name="loading">Loading</string>
+    <string name="lori_johnson_gmail_com">lori.johnson@gmail.com</string>
 </resources>
