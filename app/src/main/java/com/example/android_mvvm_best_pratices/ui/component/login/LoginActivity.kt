@@ -19,7 +19,10 @@ class LoginActivity : BaseActivity() {
         setContentView(binding.root)
         binding.loginViewModel = viewModel
         binding.lifecycleOwner = this
+        viewModel.registerStatus.observe(this) {
 
+
+        }
     }
 
 
