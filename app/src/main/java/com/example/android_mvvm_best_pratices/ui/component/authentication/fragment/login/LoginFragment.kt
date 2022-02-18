@@ -1,13 +1,17 @@
 package com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.login
 
-import androidx.activity.viewModels
-import com.example.android_mvvm_best_pratices.databinding.ActivityLoginBinding
+
+import android.view.LayoutInflater
+import android.view.View
+import androidx.fragment.app.viewModels
+ 
+import com.example.android_mvvm_best_pratices.databinding.FragmentLoginBinding
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment() {
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: FragmentLoginBinding
 
     private val viewModel: LoginViewModel by viewModels()
 
@@ -17,11 +21,12 @@ class LoginFragment : BaseFragment() {
         }
     }
 
-    override fun initViewBinding() {
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun initViewBinding(layoutInflater: LayoutInflater): View {
+        binding = FragmentLoginBinding.inflate(layoutInflater)
+
         binding.loginViewModel = viewModel
         binding.lifecycleOwner = this
+        return binding.root
 
     }
 
