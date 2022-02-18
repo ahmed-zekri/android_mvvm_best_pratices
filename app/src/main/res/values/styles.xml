@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SpinnerTheme">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:fontFamily">@font/font_opensans_light</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <color name="gray">#808080</color>
+</resources>

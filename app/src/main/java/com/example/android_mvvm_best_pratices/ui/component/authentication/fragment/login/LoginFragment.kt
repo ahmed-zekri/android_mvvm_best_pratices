@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class LoginFragment : BaseFragment() {
     private lateinit var binding: FragmentLoginBinding
 
-    private val viewModel: LoginViewModel by viewModels()
+    private val viewModel: RegisterViewModel by viewModels()
 
     override fun observeViewModel() {
         viewModel.registerStatus.observe(this) {

@@ -8,7 +8,7 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android_mvvm_best_pratices.SPLASH_DELAY
 import com.example.android_mvvm_best_pratices.databinding.ActivitySplashBinding
-import com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.login.LoginFragment
+import com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.register.RegisterFragment
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun navigateToLogin() {
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, LoginFragment::class.java)
+            val intent = Intent(this, RegisterFragment::class.java)
             startActivity(intent)
 
         }, SPLASH_DELAY.toLong())

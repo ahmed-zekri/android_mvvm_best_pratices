@@ -1,33 +1,20 @@
 package com.example.android_mvvm_best_pratices.ui.component.authentication.adapter
 
-import android.content.Context
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.viewpager.widget.PagerAdapter
-import com.example.android_mvvm_best_pratices.databinding.ViewPagerItemBinding
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.android_mvvm_best_pratices.TAB_COUNT
+import com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.login.LoginFragment
+import com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.register.RegisterFragment
 
 
-class PageAdapter(private val mContext: Context, private val itemList: List<String>) :
-    PagerAdapter() {
+class PageAdapter(manager: FragmentActivity) :
+    FragmentStateAdapter(manager) {
+    override fun getItemCount(): Int = TAB_COUNT
 
 
-    override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val layoutInflater = LayoutInflater.from(mContext)
-        val binding = ViewPagerItemBinding.inflate(layoutInflater!!, container, false)
-        return binding.root
-    }
+    override fun createFragment(position: Int): Fragment =
+        if (position == 0) LoginFragment() else RegisterFragment()
 
-    override fun getCount(): Int {
-        return itemList.size
-    }
 
-    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        val view = `object` as View
-        container.removeView(view)
-    }
-
-    override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        return view == `object`
-    }
 }

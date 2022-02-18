@@ -8,7 +8,7 @@
 
         <variable
             name="loginViewModel"
-            type="com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.login.LoginViewModel" />
+            type="com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.login.RegisterViewModel" />
     </data>
 
 
@@ -66,7 +66,7 @@
                         app:layout_constraintRight_toRightOf="parent"
 
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.25" />
+                        app:layout_constraintVertical_bias="0.07999998" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/inputs_constraint_layout"
