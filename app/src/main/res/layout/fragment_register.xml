@@ -205,7 +205,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:theme="@style/SpinnerTheme"
-
             app:layout_constraintEnd_toEndOf="@id/welcom_back_log_in_text_view"
             app:layout_constraintStart_toStartOf="@id/welcom_back_log_in_text_view"
             app:layout_constraintTop_toBottomOf="@+id/inputs_constraint_layout" />
@@ -213,3 +212,4 @@
 
 
 </layout>
+
