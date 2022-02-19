@@ -11,7 +11,9 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import com.example.android_mvvm_best_pratices.R
 import com.example.android_mvvm_best_pratices.databinding.FragmentRegisterBinding
+import com.example.android_mvvm_best_pratices.ui.component.authentication.activity.AuthenticationActivity
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseFragment
+import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -23,7 +25,12 @@ class RegisterFragment : BaseFragment() {
 
     override fun observeViewModel() {
         viewModel.registerStatus.observe(this) {
+            if (it.data != null) {
+                val tabLayout: TabLayout =
+                    (requireActivity() as AuthenticationActivity).binding.tabLayout
+                tabLayout.selectTab(tabLayout.getTabAt(0))
 
+            }
         }
     }
 

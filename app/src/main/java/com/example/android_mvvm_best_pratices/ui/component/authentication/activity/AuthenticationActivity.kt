@@ -10,10 +10,12 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class AuthenticationActivity : AppCompatActivity() {
 
+    lateinit var binding: ActivityAuthenticationBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        val binding = ActivityAuthenticationBinding.inflate(layoutInflater)
+        binding = ActivityAuthenticationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val adapter = PageAdapter(this)
         binding.viewPager2.adapter = adapter
