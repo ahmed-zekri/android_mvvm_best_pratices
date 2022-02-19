@@ -8,7 +8,7 @@
 
         <variable
             name="loginViewModel"
-            type="com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.login.RegisterViewModel" />
+            type="com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.register.RegisterViewModel" />
     </data>
 
 
@@ -25,12 +25,13 @@
             android:background="@drawable/bank2_log_in_activity_button_two_button_ripple"
             android:fontFamily="@font/font_opensans_semibold"
             android:gravity="center"
-            android:text="Login"
+            android:onClick="@{(view)->loginViewModel.doRegister()}"
+            android:text="@string/register"
             android:textColor="#FFFFFF"
             android:textSize="13sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner"
+            app:layout_constraintTop_toBottomOf="@+id/inputs_constraint_layout"
             tools:layout_editor_absoluteX="40dp"
             tools:layout_editor_absoluteY="336dp" />
 
@@ -41,7 +42,7 @@
             android:layout_marginTop="58dp"
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
-            android:text="@string/don_t_have_an_account_sign_up"
+            android:text="@string/already_have_an_account"
             android:textColor="#454C66"
             android:textSize="13sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -71,7 +72,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/inputs_constraint_layout"
             android:layout_width="295dp"
-            android:layout_height="173dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="68dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -80,12 +81,73 @@
             tools:layout_editor_absoluteY="123dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/username_layout"
                 android:layout_width="0dp"
                 android:layout_height="77dp"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp">
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-1dp"
+                    android:alpha="0.64"
+                    android:gravity="start"
+                    android:lineSpacingMultiplier="1.25"
+                    android:text="@string/username"
+                    android:textColor="#454C66"
+                    android:textSize="13sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="-2dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="9dp"
+                    android:background="#F5F6F6"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/username"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="27dp" />
+
+                <EditText
+                    android:layout_width="260dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="23dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="#00000000"
+                    android:gravity="start|center_vertical"
+                    android:hint="@string/username"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:text="@={loginViewModel.registerRequest.username}"
+                    android:textColor="#19224C"
+                    android:textColorHint="#D0D1D5"
+                    android:textSize="15sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/username"
+                    tools:layout_editor_absoluteX="20dp"
+                    tools:layout_editor_absoluteY="41dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mail_layout"
+                android:layout_width="0dp"
+                android:layout_height="77dp"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/username_layout"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="0dp">
 
@@ -128,7 +190,7 @@
                     android:hint="@string/lori_johnson_gmail_com"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:text="@={loginViewModel.registerRequest.username}"
+                    android:text="@={loginViewModel.registerRequest.email}"
                     android:textColor="#19224C"
                     android:textColorHint="#D0D1D5"
                     android:textSize="15sp"
@@ -139,12 +201,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/password_layout"
                 android:layout_width="0dp"
                 android:layout_height="77dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_weight="1"
+
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mail_layout"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="96dp">
 
@@ -195,19 +259,32 @@
                     app:layout_constraintTop_toBottomOf="@+id/password_text_view"
                     tools:layout_editor_absoluteX="19dp"
                     tools:layout_editor_absoluteY="48dp" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:theme="@style/SpinnerTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password_layout" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="0dp"
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:theme="@style/SpinnerTheme"
-            app:layout_constraintEnd_toEndOf="@id/welcom_back_log_in_text_view"
-            app:layout_constraintStart_toStartOf="@id/welcom_back_log_in_text_view"
-            app:layout_constraintTop_toBottomOf="@+id/inputs_constraint_layout" />
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/font_opensans_light"
+            android:text="@{loginViewModel.registerStatus.data==null?loginViewModel.registerStatus.message:loginViewModel.registerRequest.username+ ` created successfully`}"
+            android:textColor="@{loginViewModel.registerStatus.data==null?@color/red:@color/green}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/button_two_button"
+            app:layout_constraintStart_toStartOf="@+id/button_two_button"
+            app:layout_constraintTop_toBottomOf="@+id/button_two_button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

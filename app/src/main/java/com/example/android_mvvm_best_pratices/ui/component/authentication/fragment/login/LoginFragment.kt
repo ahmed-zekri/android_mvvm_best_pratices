@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
  
 import com.example.android_mvvm_best_pratices.databinding.FragmentLoginBinding
+import com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.register.RegisterViewModel
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 

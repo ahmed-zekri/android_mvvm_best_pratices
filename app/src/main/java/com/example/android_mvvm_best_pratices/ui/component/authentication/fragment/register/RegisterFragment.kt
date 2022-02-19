@@ -11,7 +11,6 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import com.example.android_mvvm_best_pratices.R
 import com.example.android_mvvm_best_pratices.databinding.FragmentRegisterBinding
-import com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.login.RegisterViewModel
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
