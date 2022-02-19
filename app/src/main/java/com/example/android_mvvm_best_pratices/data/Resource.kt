@@ -7,7 +7,8 @@ sealed class Resource<T>(
     val data: T? = null,
     val error: Int? = null,
     val message: String? = null,
-    val loading: Int = View.INVISIBLE
+    val loading: Int = View.INVISIBLE,
+    val idle: Boolean = false
 ) {
 
     class Success<T>(data: T) : Resource<T>(data = data)
@@ -18,7 +19,7 @@ sealed class Resource<T>(
     class ServerError<T>(error: Int?, message: String?) :
         Resource<T>(error = error, message = message)
 
-    class Idle<T> : Resource<T>()
+    class Idle<T> : Resource<T>(idle = true)
 
 
 }

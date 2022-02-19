@@ -16,6 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class RegisterViewModel @Inject constructor(private val dataRepository: DataRepository) :
     BaseViewModel() {
+
     val registerRequest = RegisterRequest()
     val registerStatus = MutableLiveData<Resource<User>>()
 
@@ -24,8 +25,18 @@ class RegisterViewModel @Inject constructor(private val dataRepository: DataRepo
         registerStatus.postValue(Resource.Idle())
     }
 
+    fun correctInputs(): Boolean {
+
+
+        return registerRequest.email.isNotEmpty() && registerRequest.password.isNotEmpty() && registerRequest.username.isNotEmpty()
+
+    }
+
     fun doRegister() {
+
         registerStatus.postValue(Resource.Loading())
+        if (!correctInputs())
+            return
         viewModelScope.launch {
             dataRepository.doRegister(registerRequest).collect {
 
