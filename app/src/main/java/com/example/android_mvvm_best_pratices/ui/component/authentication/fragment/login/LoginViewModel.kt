@@ -21,7 +21,7 @@ class LoginViewModel @Inject constructor(private val dataRepository: DataReposit
 
 
     init {
-        registerStatus.postValue(Resource.Idle())
+        registerStatus.postValue(Resource.Idle(""))
     }
 
     fun doRegister() {

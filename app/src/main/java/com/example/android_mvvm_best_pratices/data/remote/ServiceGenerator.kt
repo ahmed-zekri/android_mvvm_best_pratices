@@ -2,7 +2,6 @@ package com.example.android_mvvm_best_pratices.data.remote
 
 import com.example.android_mvvm_best_pratices.BASE_URL
 import com.example.android_mvvm_best_pratices.BuildConfig
-import com.example.android_mvvm_best_pratices.TEST_BASE_URL
 import com.example.android_mvvm_best_pratices.data.remote.moshiFactories.MyStandardJsonAdapters
 import com.squareup.moshi.Moshi
 import com.task.data.remote.moshiFactories.MyKotlinJsonAdapterFactory

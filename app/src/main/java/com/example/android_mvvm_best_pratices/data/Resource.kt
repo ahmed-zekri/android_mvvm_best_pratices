@@ -19,7 +19,7 @@ sealed class Resource<T>(
     class ServerError<T>(error: Int?, message: String?) :
         Resource<T>(error = error, message = message)
 
-    class Idle<T> : Resource<T>(idle = true)
+    class Idle<T>(message: String) : Resource<T>(idle = true, message = message)
 
 
 }

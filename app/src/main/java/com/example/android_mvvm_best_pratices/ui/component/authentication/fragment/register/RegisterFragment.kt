@@ -1,17 +1,10 @@
 package com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.register
 
 
-import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.CompoundButton
-import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
-import com.example.android_mvvm_best_pratices.R
 import com.example.android_mvvm_best_pratices.databinding.FragmentRegisterBinding
 import com.example.android_mvvm_best_pratices.ui.component.authentication.activity.AuthenticationActivity
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseFragment

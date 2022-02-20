@@ -8,6 +8,7 @@ import com.example.android_mvvm_best_pratices.data.Resource
 import com.example.android_mvvm_best_pratices.data.dto.authentication.RegisterRequest
 import com.example.android_mvvm_best_pratices.data.dto.user.User
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseViewModel
+import com.example.android_mvvm_best_pratices.utils.RegexUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -35,23 +36,29 @@ class RegisterViewModel @Inject constructor(private val dataRepository: DataRepo
 
 
     init {
-        registerStatus.postValue(Resource.Idle())
+        registerStatus.postValue(Resource.Idle(message = ""))
 
     }
 
-    fun correctInputs(): Boolean {
+    fun correctInputs(): String {
+
         if (!attempted)
-            return true
+            return ""
+        if (!RegexUtils.isValidEmail(registerRequest.email))
+            return "Invalid mail"
 
-        return registerRequest.email.isNotEmpty() && registerRequest.password.isNotEmpty() && registerRequest.username.isNotEmpty()
-
+        if (registerRequest.password.length < 5)
+            return "Password must be at least 5 characters long"
+        if (registerRequest.username.length < 5)
+            return "Username must be at least 5 characters long"
+        return ""
     }
 
     fun doRegister() {
         attempted = true
         registerStatus.postValue(Resource.Loading())
-        if (!correctInputs()) {
-            registerStatus.postValue(Resource.Idle())
+        if (correctInputs() != "") {
+            registerStatus.postValue(Resource.Idle(message = correctInputs()))
             return
         }
 
