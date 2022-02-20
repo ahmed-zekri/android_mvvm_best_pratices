@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.CompoundButton
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
@@ -22,6 +23,8 @@ class RegisterFragment : BaseFragment() {
     private lateinit var binding: FragmentRegisterBinding
 
     private val viewModel: RegisterViewModel by viewModels()
+
+
 
 
     override fun observeViewModel() {

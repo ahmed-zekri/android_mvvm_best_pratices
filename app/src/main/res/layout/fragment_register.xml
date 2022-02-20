@@ -59,18 +59,17 @@
             android:layout_width="295dp"
             android:layout_height="wrap_content"
 
+            android:layout_marginTop="48dp"
             android:fontFamily="@font/font_opensans_light"
             android:gravity="start"
             android:lineSpacingMultiplier="1.5"
             android:text="@string/register_to_continue"
             android:textColor="#19224C"
             android:textSize="20sp"
-         android:layout_marginTop="24dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
 
-            app:layout_constraintTop_toTopOf="parent"
-         />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/inputs_constraint_layout"
@@ -281,6 +280,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:onCheckedChanged="@{loginViewModel.checkBoxCheckedStateListener}"
                 android:text="@string/user_role"
                 android:theme="@style/SpinnerTheme"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -292,6 +292,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:onCheckedChanged="@{loginViewModel.checkBoxCheckedStateListener}"
                 android:text="@string/admin_role"
                 android:theme="@style/SpinnerTheme"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -303,6 +304,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:onCheckedChanged="@{loginViewModel.checkBoxCheckedStateListener}"
                 android:text="@string/moderator_role"
                 android:theme="@style/SpinnerTheme"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -314,6 +316,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:onCheckedChanged="@{loginViewModel.checkBoxCheckedStateListener}"
                 android:text="@string/devops_role"
                 android:theme="@style/SpinnerTheme"
                 app:layout_constraintEnd_toEndOf="parent"
