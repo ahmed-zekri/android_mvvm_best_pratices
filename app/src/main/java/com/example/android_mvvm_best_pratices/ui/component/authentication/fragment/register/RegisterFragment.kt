@@ -4,6 +4,7 @@ package com.example.android_mvvm_best_pratices.ui.component.authentication.fragm
 import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CompoundButton
@@ -25,16 +26,24 @@ class RegisterFragment : BaseFragment() {
     private val viewModel: RegisterViewModel by viewModels()
 
 
-
-
     override fun observeViewModel() {
         viewModel.registerStatus.observe(this.viewLifecycleOwner) {
+
+            if (it.loading)
+                requireActivity().window.setFlags(
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                )
+            else
+                requireActivity().window
+                    .clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
             if (it.data != null) {
                 val tabLayout: TabLayout =
                     (requireActivity() as AuthenticationActivity).binding.tabLayout
                 tabLayout.selectTab(tabLayout.getTabAt(0))
 
             }
+
         }
     }
 

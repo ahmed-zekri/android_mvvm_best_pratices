@@ -53,7 +53,7 @@ class ServiceGenerator @Inject constructor() {
         okHttpBuilder.readTimeout(timeoutRead.toLong(), TimeUnit.SECONDS)
         val client = okHttpBuilder.build()
         retrofit = Retrofit.Builder()
-            .baseUrl(TEST_BASE_URL).client(client)
+            .baseUrl(BASE_URL).client(client)
             .addConverterFactory(MoshiConverterFactory.create(getMoshi()))
             .build()
     }
