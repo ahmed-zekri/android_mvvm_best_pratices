@@ -23,7 +23,7 @@
             android:id="@+id/button_two_button"
             android:layout_width="295dp"
             android:layout_height="46dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="28dp"
             android:background="@drawable/bank2_log_in_activity_button_two_button_ripple"
             android:fontFamily="@font/font_opensans_semibold"
             android:gravity="center"
@@ -41,7 +41,7 @@
             android:id="@+id/don_thave_an_accoun_button"
             android:layout_width="193dp"
             android:layout_height="20dp"
-            android:layout_marginTop="58dp"
+            android:layout_marginTop="16dp"
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
             android:text="@string/already_have_an_account"
@@ -49,33 +49,34 @@
             android:textSize="13sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_two_button"
+            app:layout_constraintTop_toBottomOf="@+id/info_text"
             tools:layout_editor_absoluteX="91dp"
             tools:layout_editor_absoluteY="440dp" />
+
 
         <TextView
             android:id="@+id/welcom_back_log_in_text_view"
             android:layout_width="295dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
+
             android:fontFamily="@font/font_opensans_light"
             android:gravity="start"
             android:lineSpacingMultiplier="1.5"
-            android:text="@string/welcom_back_log_in_to_continue_with_ronnystudio_ui_for_android"
+            android:text="@string/register_to_continue"
             android:textColor="#19224C"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+         android:layout_marginTop="24dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
 
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.07999998" />
+         />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/inputs_constraint_layout"
             android:layout_width="295dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="68dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/welcom_back_log_in_text_view"
@@ -264,30 +265,85 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Spinner
-                android:id="@+id/spinner"
+            <TextView
+                android:id="@+id/roles_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/roles"
                 android:theme="@style/SpinnerTheme"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/password_layout" />
+
+            <CheckBox
+                android:id="@+id/user_role"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/user_role"
+                android:theme="@style/SpinnerTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roles_label" />
+
+            <CheckBox
+                android:id="@+id/admin_role"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/admin_role"
+                android:theme="@style/SpinnerTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_role" />
+
+            <CheckBox
+                android:id="@+id/moderator_role"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/moderator_role"
+                android:theme="@style/SpinnerTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/admin_role" />
+
+            <CheckBox
+                android:id="@+id/devops_role"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/devops_role"
+                android:theme="@style/SpinnerTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/moderator_role" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <TextView
+            android:id="@+id/info_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/font_opensans_light"
             android:text="@{!loginViewModel.correctInputs()?`Empty field`:(loginViewModel.registerStatus.data==null?loginViewModel.registerStatus.message:loginViewModel.registerRequest.username+ ` created successfully`)}"
             android:textColor="@{loginViewModel.registerStatus.data==null?@color/red:@color/green}"
             android:textStyle="bold"
-            android:visibility="@{loginViewModel.registerStatus.idle?View.INVISIBLE:View.VISIBLE}"
+
             app:layout_constraintEnd_toEndOf="@+id/button_two_button"
             app:layout_constraintStart_toStartOf="@+id/button_two_button"
             app:layout_constraintTop_toBottomOf="@+id/button_two_button" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{loginViewModel.registerStatus.loading?View.VISIBLE:View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

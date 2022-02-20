@@ -17,26 +17,32 @@ import javax.inject.Inject
 class RegisterViewModel @Inject constructor(private val dataRepository: DataRepository) :
     BaseViewModel() {
 
+    private var attempted = false
     val registerRequest = RegisterRequest()
     val registerStatus = MutableLiveData<Resource<User>>()
 
 
     init {
         registerStatus.postValue(Resource.Idle())
+
     }
 
     fun correctInputs(): Boolean {
-
+        if (!attempted)
+            return true
 
         return registerRequest.email.isNotEmpty() && registerRequest.password.isNotEmpty() && registerRequest.username.isNotEmpty()
 
     }
 
     fun doRegister() {
-
+        attempted = true
         registerStatus.postValue(Resource.Loading())
-        if (!correctInputs())
+        if (!correctInputs()) {
+            registerStatus.postValue(Resource.Idle())
             return
+        }
+
         viewModelScope.launch {
             dataRepository.doRegister(registerRequest).collect {
 

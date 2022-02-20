@@ -39,10 +39,17 @@
     <string name="already_have_an_account">Already have an account, login</string>
     <string name="register">Register</string>
     <string name="username">Username</string>
+    <string name="register_to_continue">Please register to continue</string>
+    <string name="user_role">User</string>
+    <string name="roles">Roles</string>
+    <string name="admin_role">Admin</string>
+    <string name="moderator_role">Moderator</string>
+    <string name="devops_role">Devops</string>
     <string-array name="roles">
         <item>User</item>
         <item>Admin</item>
         <item>Moderator</item>
+        <item>Devops</item>
 
     </string-array>
 </resources>

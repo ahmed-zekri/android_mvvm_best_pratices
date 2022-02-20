@@ -10,7 +10,7 @@ data class RegisterRequest(
     var email: String = "",
 
 
-    var role: String = "",
+    var role: Int = 0,
 
 
     )

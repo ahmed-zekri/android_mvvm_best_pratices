@@ -23,8 +23,9 @@ class RegisterFragment : BaseFragment() {
 
     private val viewModel: RegisterViewModel by viewModels()
 
+
     override fun observeViewModel() {
-        viewModel.registerStatus.observe(this) {
+        viewModel.registerStatus.observe(this.viewLifecycleOwner) {
             if (it.data != null) {
                 val tabLayout: TabLayout =
                     (requireActivity() as AuthenticationActivity).binding.tabLayout
@@ -38,42 +39,9 @@ class RegisterFragment : BaseFragment() {
         binding = FragmentRegisterBinding.inflate(layoutInflater)
 
         binding.loginViewModel = viewModel
-        binding.lifecycleOwner = this
-        context?.let {
-            ArrayAdapter.createFromResource(
-                it,
-                R.array.roles,
-                android.R.layout.simple_spinner_item
-            ).also { adapter ->
-                // Specify the layout to use when the list of choices appears
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                // Apply the adapter to the spinner
-                binding.spinner.adapter = adapter
-
-                val typeface = ResourcesCompat.getFont(requireContext(), R.font.font_opensans_light)
-                binding.spinner.onItemSelectedListener = object : AdapterView.OnItemClickListener,
-                    AdapterView.OnItemSelectedListener {
-                    override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-
-                    }
-
-                    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                        val textView = p0?.getChildAt(0) as TextView
-                        textView.typeface = typeface
-                        textView.setTextColor(requireActivity().getColor(R.color.gray))
-                        textView.setTypeface(textView.typeface, Typeface.BOLD)
+        binding.lifecycleOwner = viewLifecycleOwner
 
 
-                    }
-
-                    override fun onNothingSelected(p0: AdapterView<*>?) {
-
-                    }
-
-
-                }
-            }
-        }
         return binding.root
 
     }
