@@ -6,3 +6,5 @@ const val TEST_BASE_URL = "http://192.168.43.213:8080/api/"
 const val NO_INTERNET_CONNECTION_ERROR = "Error communicating with server"
 const val ERROR_DELIMITER = ";;"
 const val TAB_COUNT = 2
+const val SHARED_PREF_NAME = "my_prefs"
+const val TOKEN_KEY = "token"

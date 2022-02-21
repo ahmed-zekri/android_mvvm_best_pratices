@@ -1,7 +1,9 @@
 package com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.login
 
+import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.android_mvvm_best_pratices.TOKEN_KEY
 import com.example.android_mvvm_best_pratices.data.DataRepository
 import com.example.android_mvvm_best_pratices.data.Resource
 import com.example.android_mvvm_best_pratices.data.dto.authentication.LoginRequest
@@ -15,7 +17,10 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val dataRepository: DataRepository) :
+class LoginViewModel @Inject constructor(
+    private val dataRepository: DataRepository,
+    private val sharedPreferencesEditor: SharedPreferences.Editor
+) :
     AuthenticationBaseViewModel() {
     val loginRequest = LoginRequest()
     val loginStatus = MutableLiveData<Resource<LoginResponse>>()
@@ -36,7 +41,10 @@ class LoginViewModel @Inject constructor(private val dataRepository: DataReposit
         loginStatus.postValue(Resource.Loading())
         viewModelScope.launch {
             dataRepository.doLogin(loginRequest).collect {
-
+                if (it.data != null) {
+                    sharedPreferencesEditor.putString(TOKEN_KEY, it.data.type + " " + it.data.token)
+                    sharedPreferencesEditor.commit()
+                }
                 loginStatus.postValue(it)
             }
 
