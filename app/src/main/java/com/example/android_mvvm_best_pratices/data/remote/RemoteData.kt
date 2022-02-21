@@ -13,12 +13,12 @@ import java.io.IOException
 import javax.inject.Inject
 
 class RemoteData @Inject
-constructor(private val serviceGenerator: ServiceGenerator) : RemoteDataSource {
-    lateinit var service: APIAuthService
+constructor(serviceGenerator: ServiceGenerator) : RemoteDataSource {
+    private var service = serviceGenerator.createService(APIAuthService::class.java)
 
 
     override suspend fun register(registerRequest: RegisterRequest): Resource<User> {
-        service = serviceGenerator.createService(APIAuthService::class.java)
+
         return when (val response = processCall {
             service.register(
                 registerRequest

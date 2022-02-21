@@ -6,7 +6,7 @@ data class LoginResponse(
 
 
     var roles: List<String> = listOf(),
-    var bearer: String = "",
+    var type: String = "",
 
 
     )

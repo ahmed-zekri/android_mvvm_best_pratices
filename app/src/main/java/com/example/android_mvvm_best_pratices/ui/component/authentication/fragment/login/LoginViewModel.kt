@@ -28,6 +28,12 @@ class LoginViewModel @Inject constructor(private val dataRepository: DataReposit
     fun doLogin() {
         attempted = true
         loginStatus.postValue(Resource.Loading())
+        if (correctInputs() != "") {
+            loginStatus.postValue(Resource.Idle(message = correctInputs()))
+            return
+        }
+
+        loginStatus.postValue(Resource.Loading())
         viewModelScope.launch {
             dataRepository.doLogin(loginRequest).collect {
 
