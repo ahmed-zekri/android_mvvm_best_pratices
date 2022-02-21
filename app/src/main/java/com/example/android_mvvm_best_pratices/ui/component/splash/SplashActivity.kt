@@ -5,31 +5,45 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android_mvvm_best_pratices.SPLASH_DELAY
 import com.example.android_mvvm_best_pratices.databinding.ActivitySplashBinding
+import com.example.android_mvvm_best_pratices.ui.component.authentication.activity.AuthenticationActivity
+import com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.home.HomeActivity
 import com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.register.RegisterFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("CustomSplashScreen")
+
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
+    private val viewModel: SplashViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        navigateToLogin()
+        viewModel.checkData()
+        viewModel.hasData.observe(this) {
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                val intent = Intent(
+                    this,
+                    if (it) HomeActivity::class.java else AuthenticationActivity::class.java
+                )
+                startActivity(intent)
+
+            }, SPLASH_DELAY.toLong())
+
+
+        }
+
     }
 
-    private fun navigateToLogin() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, RegisterFragment::class.java)
-            startActivity(intent)
 
-        }, SPLASH_DELAY.toLong())
-
-    }
 
 
 }

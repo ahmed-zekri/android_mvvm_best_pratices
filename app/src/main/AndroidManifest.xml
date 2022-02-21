@@ -16,14 +16,14 @@
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.component.authentication.fragment.home.HomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
             android:name=".ui.component.authentication.activity.AuthenticationActivity"
             android:exported="true">
-            <intent-filter>
 
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.component.splash.SplashActivity"
