@@ -12,7 +12,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.android_mvvm_best_pratices.R
 import com.example.android_mvvm_best_pratices.databinding.ActivityHomeBinding
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
