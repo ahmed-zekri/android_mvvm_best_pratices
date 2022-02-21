@@ -45,6 +45,7 @@
     <string name="admin_role">Admin</string>
     <string name="moderator_role">Moderator</string>
     <string name="devops_role">Devops</string>
+
     <string-array name="roles">
         <item>User</item>
         <item>Admin</item>

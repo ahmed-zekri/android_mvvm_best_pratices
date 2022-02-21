@@ -1,16 +1,12 @@
 package com.example.android_mvvm_best_pratices.data.dto.authentication
 
-data  class RegisterRequest(
+data class LoginResponse(
 
-    var username: String = "",
-
-
-    var password: String = "",
-
-    var email: String = "",
+    var token: String = "",
 
 
     var roles: List<String> = listOf(),
+    var bearer: String = "",
 
 
     )

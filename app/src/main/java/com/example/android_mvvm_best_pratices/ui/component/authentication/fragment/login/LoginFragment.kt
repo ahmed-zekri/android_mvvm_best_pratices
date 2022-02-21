@@ -6,7 +6,6 @@ import android.view.View
 import androidx.fragment.app.viewModels
  
 import com.example.android_mvvm_best_pratices.databinding.FragmentLoginBinding
-import com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.register.RegisterViewModel
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,10 +13,10 @@ import dagger.hilt.android.AndroidEntryPoint
 class LoginFragment : BaseFragment() {
     private lateinit var binding: FragmentLoginBinding
 
-    private val viewModel: RegisterViewModel by viewModels()
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun observeViewModel() {
-        viewModel.registerStatus.observe(this) {
+        viewModel.loginStatus.observe(this) {
 
         }
     }

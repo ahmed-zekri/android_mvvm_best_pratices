@@ -1,5 +1,7 @@
 package com.example.android_mvvm_best_pratices.data
 
+import com.example.android_mvvm_best_pratices.data.dto.authentication.LoginRequest
+import com.example.android_mvvm_best_pratices.data.dto.authentication.LoginResponse
 import com.example.android_mvvm_best_pratices.data.dto.authentication.RegisterRequest
 import com.example.android_mvvm_best_pratices.data.dto.user.User
 import com.example.android_mvvm_best_pratices.data.remote.RemoteData
@@ -22,5 +24,13 @@ class DataRepository @Inject constructor(
         }.flowOn(ioDispatcher)
 
     }
+    override suspend fun doLogin(loginRequest: LoginRequest): Flow<Resource<LoginResponse>> {
+        return  flow {
 
+            emit(remoteRepository.login(loginRequest))
+
+
+        }.flowOn(ioDispatcher)
+
+    }
 }

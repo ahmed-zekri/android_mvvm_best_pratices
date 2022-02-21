@@ -7,7 +7,7 @@ import com.example.android_mvvm_best_pratices.data.DataRepository
 import com.example.android_mvvm_best_pratices.data.Resource
 import com.example.android_mvvm_best_pratices.data.dto.authentication.RegisterRequest
 import com.example.android_mvvm_best_pratices.data.dto.user.User
-import com.example.android_mvvm_best_pratices.ui.component.base.BaseViewModel
+import com.example.android_mvvm_best_pratices.ui.component.base.AuthenticationBaseViewModel
 import com.example.android_mvvm_best_pratices.utils.RegexUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -17,9 +17,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(private val dataRepository: DataRepository) :
-    BaseViewModel() {
+    AuthenticationBaseViewModel() {
 
-    private var attempted = false
+
     val registerRequest = RegisterRequest()
     val registerStatus = MutableLiveData<Resource<User>>()
 
@@ -40,7 +40,7 @@ class RegisterViewModel @Inject constructor(private val dataRepository: DataRepo
 
     }
 
-    fun correctInputs(): String {
+    override fun correctInputs(): String {
 
         if (!attempted)
             return ""

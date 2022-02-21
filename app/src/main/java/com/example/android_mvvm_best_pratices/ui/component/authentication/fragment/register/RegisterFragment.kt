@@ -43,7 +43,7 @@ class RegisterFragment : BaseFragment() {
     override fun initViewBinding(layoutInflater: LayoutInflater): View {
         binding = FragmentRegisterBinding.inflate(layoutInflater)
 
-        binding.loginViewModel = viewModel
+        binding.registerViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
 
