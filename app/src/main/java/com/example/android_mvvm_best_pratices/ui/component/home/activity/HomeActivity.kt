@@ -1,4 +1,4 @@
-package com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.home
+package com.example.android_mvvm_best_pratices.ui.component.home.activity
 
 import android.os.Bundle
 import android.view.Menu
@@ -12,7 +12,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.android_mvvm_best_pratices.R
 import com.example.android_mvvm_best_pratices.databinding.ActivityHomeBinding
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
 
 class HomeActivity : AppCompatActivity() {
 
@@ -24,12 +23,9 @@ class HomeActivity : AppCompatActivity() {
         val binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        setSupportActionBar(binding.appBarHome.toolbar)
+        setSupportActionBar(binding.appBarHome.toolbar)
 
-        binding.appBarHome.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_home)
@@ -37,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_movies, R.id.nav_about, R.id.nav_logout
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

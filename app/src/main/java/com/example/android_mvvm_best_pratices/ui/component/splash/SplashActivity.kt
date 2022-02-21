@@ -10,8 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.android_mvvm_best_pratices.SPLASH_DELAY
 import com.example.android_mvvm_best_pratices.databinding.ActivitySplashBinding
 import com.example.android_mvvm_best_pratices.ui.component.authentication.activity.AuthenticationActivity
-import com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.home.HomeActivity
-import com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.register.RegisterFragment
+import com.example.android_mvvm_best_pratices.ui.component.home.activity.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("CustomSplashScreen")

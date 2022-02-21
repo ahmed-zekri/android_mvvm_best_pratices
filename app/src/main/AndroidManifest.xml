@@ -16,10 +16,10 @@
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.component.authentication.fragment.home.HomeActivity"
+            android:name=".ui.component.home.activity.HomeActivity"
             android:exported="false"
             android:label="@string/title_activity_home"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".ui.component.authentication.activity.AuthenticationActivity"
             android:exported="true">

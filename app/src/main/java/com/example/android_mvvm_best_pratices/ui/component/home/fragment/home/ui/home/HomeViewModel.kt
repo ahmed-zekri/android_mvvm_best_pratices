@@ -1,4 +1,4 @@
-package com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.home.ui.home
+package com.example.android_mvvm_best_pratices.ui.component.home.fragment.home.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
