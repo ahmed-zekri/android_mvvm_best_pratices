@@ -3,7 +3,7 @@ package com.example.android_mvvm_best_pratices.ui.component.authentication.fragm
 import android.widget.CompoundButton
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.android_mvvm_best_pratices.data.DataRepository
+import com.example.android_mvvm_best_pratices.data.repositories.user.DataRepositoryUserUserImpl
 import com.example.android_mvvm_best_pratices.data.Resource
 import com.example.android_mvvm_best_pratices.data.dto.authentication.RegisterRequest
 import com.example.android_mvvm_best_pratices.data.dto.user.User
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val dataRepository: DataRepository) :
+class RegisterViewModel @Inject constructor(private val dataRepositoryUserImpl: DataRepositoryUserUserImpl) :
     AuthenticationBaseViewModel() {
 
 
@@ -63,7 +63,7 @@ class RegisterViewModel @Inject constructor(private val dataRepository: DataRepo
         }
 
         viewModelScope.launch {
-            dataRepository.doRegister(registerRequest).collect {
+            dataRepositoryUserImpl.doRegister(registerRequest).collect {
 
                 registerStatus.postValue(it)
             }

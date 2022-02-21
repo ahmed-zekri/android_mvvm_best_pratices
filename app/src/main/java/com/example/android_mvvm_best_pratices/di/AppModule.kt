@@ -3,10 +3,7 @@ package com.example.android_mvvm_best_pratices.di
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.android_mvvm_best_pratices.SHARED_PREF_NAME
-import com.example.android_mvvm_best_pratices.data.DataRepository
-import com.example.android_mvvm_best_pratices.data.remote.RemoteDataSource
 import com.example.android_mvvm_best_pratices.data.remote.ServiceGenerator
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,8 +26,8 @@ class AppModule() {
 
     @Provides
     @Singleton
-    fun provideServiceGenerator(): ServiceGenerator {
-        return ServiceGenerator()
+    fun provideServiceGenerator(sharedPreferences: SharedPreferences): ServiceGenerator {
+        return ServiceGenerator(sharedPreferences)
     }
 
 

@@ -4,11 +4,10 @@ import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.android_mvvm_best_pratices.TOKEN_KEY
-import com.example.android_mvvm_best_pratices.data.DataRepository
+import com.example.android_mvvm_best_pratices.data.repositories.user.DataRepositoryUserUserImpl
 import com.example.android_mvvm_best_pratices.data.Resource
 import com.example.android_mvvm_best_pratices.data.dto.authentication.LoginRequest
 import com.example.android_mvvm_best_pratices.data.dto.authentication.LoginResponse
-import com.example.android_mvvm_best_pratices.data.dto.user.User
 import com.example.android_mvvm_best_pratices.ui.component.base.AuthenticationBaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -18,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val dataRepository: DataRepository,
+    private val dataRepositoryUserImpl: DataRepositoryUserUserImpl,
     private val sharedPreferencesEditor: SharedPreferences.Editor
 ) :
     AuthenticationBaseViewModel() {
@@ -40,7 +39,7 @@ class LoginViewModel @Inject constructor(
 
         loginStatus.postValue(Resource.Loading())
         viewModelScope.launch {
-            dataRepository.doLogin(loginRequest).collect {
+            dataRepositoryUserImpl.doLogin(loginRequest).collect {
                 if (it.data != null) {
                     sharedPreferencesEditor.putString(TOKEN_KEY, it.data.type + " " + it.data.token)
                     sharedPreferencesEditor.commit()

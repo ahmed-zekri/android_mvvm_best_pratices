@@ -1,7 +1,9 @@
 package com.example.android_mvvm_best_pratices.di
 
-import com.example.android_mvvm_best_pratices.data.DataRepositorySource
-import com.example.android_mvvm_best_pratices.data.remote.RemoteDataSource
+import com.example.android_mvvm_best_pratices.data.repositories.user.DataRepositoryUserSource
+import com.example.android_mvvm_best_pratices.data.remote.authentication.RemoteDataSourceAuthentication
+import com.example.android_mvvm_best_pratices.data.remote.movies.RemoteDataSourceMovies
+import com.example.android_mvvm_best_pratices.data.repositories.movie.DataRepositoryMovieSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,11 +16,20 @@ abstract class DataModule {
 
     @Binds
     @Singleton
-    abstract fun provideRemoteData(remoteDataSource: RemoteDataSource): RemoteDataSource
+    abstract fun provideRemoteDataAuthentication(remoteDataSourceAuthentication: RemoteDataSourceAuthentication): RemoteDataSourceAuthentication
 
     @Binds
     @Singleton
-    abstract fun provideRemoteRepository(dataRepositorySource: DataRepositorySource): DataRepositorySource
+    abstract fun provideRemoteRepositoryAuthentication(dataRepositoryUserSource: DataRepositoryUserSource): DataRepositoryUserSource
+
+
+    @Binds
+    @Singleton
+    abstract fun provideRemoteDataMovies(remoteDataSourceMovies: RemoteDataSourceMovies): RemoteDataSourceMovies
+
+    @Binds
+    @Singleton
+    abstract fun provideRemoteRepositoryMovies(dataRepositoryMovieSource: DataRepositoryMovieSource): DataRepositoryMovieSource
 
 
 }

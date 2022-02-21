@@ -1,7 +1,9 @@
 package com.example.android_mvvm_best_pratices.data.remote
 
+import android.content.SharedPreferences
 import com.example.android_mvvm_best_pratices.BASE_URL
 import com.example.android_mvvm_best_pratices.BuildConfig
+import com.example.android_mvvm_best_pratices.TOKEN_KEY
 import com.example.android_mvvm_best_pratices.data.remote.moshiFactories.MyStandardJsonAdapters
 import com.squareup.moshi.Moshi
 import com.task.data.remote.moshiFactories.MyKotlinJsonAdapterFactory
@@ -21,7 +23,8 @@ private const val contentTypeValue = "application/json"
 private const val timeoutConnect = 30   //In seconds
 
 @Singleton
-class ServiceGenerator @Inject constructor() {
+class ServiceGenerator @Inject constructor(private val sharedPreferences: SharedPreferences) {
+
     private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
     private val retrofit: Retrofit
 
@@ -29,7 +32,7 @@ class ServiceGenerator @Inject constructor() {
         val original = chain.request()
 
         val request = original.newBuilder()
-            .header(contentType, contentTypeValue)
+            .header("Authorization", sharedPreferences.getString(TOKEN_KEY, "")!!)
             .method(original.method, original.body)
             .build()
 

@@ -1,4 +1,4 @@
-package com.example.android_mvvm_best_pratices.data.remote
+package com.example.android_mvvm_best_pratices.data.remote.authentication
 
 import com.example.android_mvvm_best_pratices.ERROR_DELIMITER
 import com.example.android_mvvm_best_pratices.NO_INTERNET_CONNECTION_ERROR
@@ -7,20 +7,20 @@ import com.example.android_mvvm_best_pratices.data.dto.authentication.LoginReque
 import com.example.android_mvvm_best_pratices.data.dto.authentication.LoginResponse
 import com.example.android_mvvm_best_pratices.data.dto.authentication.RegisterRequest
 import com.example.android_mvvm_best_pratices.data.dto.user.User
-import com.example.android_mvvm_best_pratices.data.error.NETWORK_ERROR
-import retrofit2.Response
-import java.io.IOException
+import com.example.android_mvvm_best_pratices.data.remote.ServiceGenerator
+import com.example.android_mvvm_best_pratices.ui.component.base.BaseRemoteData
 import javax.inject.Inject
 
-class RemoteData @Inject
-constructor(serviceGenerator: ServiceGenerator) : RemoteDataSource {
-    private var service = serviceGenerator.createService(APIAuthService::class.java)
+class RemoteDataAuthentication @Inject
+constructor(serviceGenerator: ServiceGenerator) : RemoteDataSourceAuthentication, BaseRemoteData(
+    serviceGenerator
+) {
 
 
     override suspend fun register(registerRequest: RegisterRequest): Resource<User> {
 
         return when (val response = processCall {
-            service.register(
+            authService.register(
                 registerRequest
             )
         }) {
@@ -43,7 +43,7 @@ constructor(serviceGenerator: ServiceGenerator) : RemoteDataSource {
 
     override suspend fun login(loginRequest: LoginRequest): Resource<LoginResponse> {
 
-        return when (val response = processCall { service.login(loginRequest) }) {
+        return when (val response = processCall { authService.login(loginRequest) }) {
             is Int -> Resource.ServerError(
                 error = response,
                 message = NO_INTERNET_CONNECTION_ERROR
@@ -58,23 +58,6 @@ constructor(serviceGenerator: ServiceGenerator) : RemoteDataSource {
             }
 
         }
-
-    }
-
-
-    private suspend fun processCall(responseCall: suspend () -> Response<*>): Any? {
-
-        return try {
-            val response = responseCall.invoke()
-            val responseCode = response.code()
-            if (response.isSuccessful)
-                response.body()
-            else responseCode.toString() + ERROR_DELIMITER + response.errorBody()?.string()
-        } catch (e: IOException) {
-            NETWORK_ERROR
-
-        }
-
 
     }
 
