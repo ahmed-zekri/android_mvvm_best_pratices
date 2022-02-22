@@ -28,7 +28,7 @@ class HomeFragment : BaseFragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
 
-        viewModel
+
         viewModel.movies.observe(viewLifecycleOwner) {
             if (it is Resource.Success)
                 binding.adapter = MoviesAdapter(it.data!!, R.layout.movie_item)
