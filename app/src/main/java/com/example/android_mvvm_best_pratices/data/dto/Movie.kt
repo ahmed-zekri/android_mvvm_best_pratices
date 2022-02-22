@@ -6,6 +6,6 @@ data class Movie(
     override var id: Long? = null, var episodes: Int,
 
     var title: String,
-    val rating: Float = 0f,
-    val isFavourite: Boolean = false
+    var rating: Float,
+    var isFavourite: Boolean = false
 ) : AdapterListItem
