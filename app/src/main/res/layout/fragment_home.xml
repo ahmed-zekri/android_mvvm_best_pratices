@@ -8,6 +8,10 @@
             name="viewModel"
             type="com.example.android_mvvm_best_pratices.ui.component.home.fragment.home.ui.home.HomeViewModel" />
 
+        <import type="com.example.android_mvvm_best_pratices.data.Resource" />
+
+        <import type="android.view.View" />
+
         <variable
             name="adapter"
             type="com.example.android_mvvm_best_pratices.ui.component.home.fragment.home.ui.home.MoviesAdapter" />
@@ -20,6 +24,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.component.home.fragment.home.ui.home.HomeFragment">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.movies instanceof Resource.Loading?View.VISIBLE:View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movies_recyclerview"

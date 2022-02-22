@@ -19,14 +19,16 @@ class HomeViewModel @Inject constructor(
     ) :
     BaseViewModel() {
 
-    val movies = MutableLiveData<List<Movie>>()
+
+    val movies = MutableLiveData<Resource<List<Movie>>>()
 
     init {
+        movies.postValue(Resource.Loading())
         viewModelScope.launch {
             repositoryMovieImpl.getMovies().collect {
 
-                if (it is Resource.Success)
-                    movies.postValue(it.data!!)
+
+                movies.postValue(it)
             }
         }
 

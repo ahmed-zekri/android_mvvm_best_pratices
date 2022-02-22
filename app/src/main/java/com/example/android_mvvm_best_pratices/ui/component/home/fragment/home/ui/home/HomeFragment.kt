@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android_mvvm_best_pratices.R
+import com.example.android_mvvm_best_pratices.data.Resource
 import com.example.android_mvvm_best_pratices.databinding.FragmentHomeBinding
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,7 +30,8 @@ class HomeFragment : BaseFragment() {
 
         viewModel
         viewModel.movies.observe(viewLifecycleOwner) {
-            binding.adapter = MoviesAdapter(it, R.layout.movie_item)
+            if (it is Resource.Success)
+                binding.adapter = MoviesAdapter(it.data!!, R.layout.movie_item)
 
 
         }
