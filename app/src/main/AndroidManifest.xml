@@ -19,7 +19,7 @@
             android:name=".ui.component.home.activity.HomeActivity"
             android:exported="false"
             android:label="@string/title_activity_home"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
             android:name=".ui.component.authentication.activity.AuthenticationActivity"
             android:exported="true">

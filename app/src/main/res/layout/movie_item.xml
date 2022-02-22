@@ -9,9 +9,7 @@
             name="movie"
             type="com.example.android_mvvm_best_pratices.data.dto.Movie" />
 
-        <variable
-            name="listener"
-            type="com.iebayirli.recyclerviewwithdatabinding.scene.main.MovieListener" />
+
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -49,7 +47,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:setFavouriteCondition="@{movie.favourite}" />
+/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text_view_name"

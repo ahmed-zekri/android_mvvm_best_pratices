@@ -3,6 +3,8 @@ package com.example.android_mvvm_best_pratices.ui.component.home.fragment.home.u
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.android_mvvm_best_pratices.R
 import com.example.android_mvvm_best_pratices.databinding.FragmentHomeBinding
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,9 +24,15 @@ class HomeFragment : BaseFragment() {
     override fun initViewBinding(layoutInflater: LayoutInflater): View {
 
         _binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding.lifecycleOwner = viewLifecycleOwner
 
 
         viewModel
+        viewModel.movies.observe(viewLifecycleOwner) {
+            binding.adapter = MoviesAdapter(it, R.layout.movie_item)
+
+
+        }
         return binding.root
     }
 

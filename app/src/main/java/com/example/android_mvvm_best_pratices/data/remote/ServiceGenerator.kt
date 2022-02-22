@@ -3,6 +3,7 @@ package com.example.android_mvvm_best_pratices.data.remote
 import android.content.SharedPreferences
 import com.example.android_mvvm_best_pratices.BASE_URL
 import com.example.android_mvvm_best_pratices.BuildConfig
+import com.example.android_mvvm_best_pratices.TEST_BASE_URL
 import com.example.android_mvvm_best_pratices.TOKEN_KEY
 import com.example.android_mvvm_best_pratices.data.remote.moshiFactories.MyStandardJsonAdapters
 import com.squareup.moshi.Moshi
@@ -55,7 +56,7 @@ class ServiceGenerator @Inject constructor(private val sharedPreferences: Shared
         okHttpBuilder.readTimeout(timeoutRead.toLong(), TimeUnit.SECONDS)
         val client = okHttpBuilder.build()
         retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL).client(client)
+            .baseUrl(TEST_BASE_URL).client(client)
             .addConverterFactory(MoshiConverterFactory.create(getMoshi()))
             .build()
     }

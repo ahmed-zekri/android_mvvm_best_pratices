@@ -1,6 +1,10 @@
 package com.example.android_mvvm_best_pratices.ui.component.home.fragment.home.ui.home
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.android_mvvm_best_pratices.data.Resource
+
+import com.example.android_mvvm_best_pratices.data.dto.Movie
 import com.example.android_mvvm_best_pratices.data.repositories.movie.DataRepositoryMovieImpl
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,13 +19,14 @@ class HomeViewModel @Inject constructor(
     ) :
     BaseViewModel() {
 
-
+    val movies = MutableLiveData<List<Movie>>()
 
     init {
         viewModelScope.launch {
             repositoryMovieImpl.getMovies().collect {
 
-
+                if (it is Resource.Success)
+                    movies.postValue(it.data!!)
             }
         }
 
