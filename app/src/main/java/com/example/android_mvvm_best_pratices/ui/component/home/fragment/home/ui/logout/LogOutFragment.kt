@@ -1,38 +1,48 @@
-package com.example.android_mvvm_best_pratices.ui.component.home.fragment.home.ui.slideshow
+package com.example.android_mvvm_best_pratices.ui.component.home.fragment.home.ui.logout
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.example.android_mvvm_best_pratices.databinding.FragmentSlideshowBinding
+import com.example.android_mvvm_best_pratices.ui.component.authentication.activity.AuthenticationActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-class SlideshowFragment : Fragment() {
+@AndroidEntryPoint
+class LogOutFragment : Fragment() {
 
     private var _binding: FragmentSlideshowBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val viewModel: LogOutViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val slideshowViewModel =
-            ViewModelProvider(this).get(SlideshowViewModel::class.java)
+
 
         _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textSlideshow
-        slideshowViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        viewModel.logOut()
+        viewModel.sharedPrefsCleared.observe(viewLifecycleOwner) {
+            if (it)
+                goToLogin()
+
+
         }
-        return root
+        return binding.root
+    }
+
+    private fun goToLogin() {
+        requireActivity().finish()
+        startActivity(Intent(context, AuthenticationActivity::class.java))
     }
 
     override fun onDestroyView() {

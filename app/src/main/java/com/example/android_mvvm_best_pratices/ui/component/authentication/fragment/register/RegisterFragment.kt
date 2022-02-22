@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import androidx.fragment.app.viewModels
+import com.example.android_mvvm_best_pratices.data.Resource
 import com.example.android_mvvm_best_pratices.databinding.FragmentRegisterBinding
 import com.example.android_mvvm_best_pratices.ui.component.authentication.activity.AuthenticationActivity
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseFragment
@@ -22,7 +23,7 @@ class RegisterFragment : BaseFragment() {
     override fun observeViewModel() {
         viewModel.registerStatus.observe(this.viewLifecycleOwner) {
 
-            if (it.loading)
+            if (it is Resource.Loading)
                 requireActivity().window.setFlags(
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
@@ -30,7 +31,7 @@ class RegisterFragment : BaseFragment() {
             else
                 requireActivity().window
                     .clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-            if (it.data != null) {
+            if (it is Resource.Success) {
                 val tabLayout: TabLayout =
                     (requireActivity() as AuthenticationActivity).binding.tabLayout
                 tabLayout.selectTab(tabLayout.getTabAt(0))

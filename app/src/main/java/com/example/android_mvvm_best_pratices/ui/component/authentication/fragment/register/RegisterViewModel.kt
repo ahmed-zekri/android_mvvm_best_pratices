@@ -36,7 +36,7 @@ class RegisterViewModel @Inject constructor(private val dataRepositoryUserImpl: 
 
 
     init {
-        registerStatus.postValue(Resource.Idle(message = ""))
+        registerStatus.postValue(Resource.Idle())
 
     }
 
@@ -58,7 +58,7 @@ class RegisterViewModel @Inject constructor(private val dataRepositoryUserImpl: 
         attempted = true
         registerStatus.postValue(Resource.Loading())
         if (correctInputs() != "") {
-            registerStatus.postValue(Resource.Idle(message = correctInputs()))
+            registerStatus.postValue(Resource.Idle())
             return
         }
 

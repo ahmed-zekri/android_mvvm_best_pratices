@@ -10,6 +10,8 @@
             name="registerViewModel"
             type="com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.register.RegisterViewModel" />
 
+        <import type="com.example.android_mvvm_best_pratices.data.Resource" />
+
         <import type="android.view.View" />
     </data>
 
@@ -164,7 +166,7 @@
                         android:alpha="0.64"
                         android:gravity="start"
                         android:lineSpacingMultiplier="1.25"
-                        android:text="Email Address"
+                        android:text="@string/email_address"
                         android:textColor="#454C66"
                         android:textSize="13sp"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -188,7 +190,6 @@
                         android:layout_width="260dp"
                         android:layout_height="18dp"
                         android:layout_marginStart="20dp"
-                        android:layout_marginLeft="20dp"
                         android:layout_marginTop="23dp"
                         android:background="#00000000"
                         android:gravity="start|center_vertical"
@@ -225,7 +226,7 @@
                         android:alpha="0.64"
                         android:gravity="start"
                         android:lineSpacingMultiplier="1.25"
-                        android:text="Password"
+                        android:text="@string/password"
                         android:textColor="#454C66"
                         android:textSize="13sp"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -251,7 +252,6 @@
                         android:layout_width="246dp"
                         android:layout_height="19dp"
                         android:layout_marginStart="19dp"
-                        android:layout_marginLeft="19dp"
                         android:layout_marginTop="23dp"
                         android:background="#00000000"
                         android:gravity="start|center_vertical"
@@ -335,7 +335,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/font_opensans_light"
                 android:text="@{registerViewModel.registerStatus.message}"
-                android:textColor="@{registerViewModel.registerStatus.data==null?@color/red:@color/green}"
+                android:textColor="@{registerViewModel.registerStatus instanceof Resource.Success?@color/green:@color/red}"
                 android:textStyle="bold"
 
                 app:layout_constraintEnd_toEndOf="@+id/button_two_button"
@@ -345,7 +345,7 @@
             <ProgressBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="@{registerViewModel.registerStatus.loading?View.VISIBLE:View.INVISIBLE}"
+                android:visibility="@{registerViewModel.registerStatus instanceof Resource.Loading?View.VISIBLE:View.INVISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -7,19 +7,19 @@ sealed class Resource<T>(
     val data: T? = null,
     val error: Int? = null,
     val message: String? = null,
-    val loading: Boolean = false,
-    val idle: Boolean = false
-) {
+
+
+    ) {
 
     class Success<T>(data: T) : Resource<T>(data = data)
-    class Loading<T> : Resource<T>(loading = true)
+    class Loading<T> : Resource<T>()
     class InternetError<T>(error: Int?, message: String?) :
         Resource<T>(error = error, message = message)
 
     class ServerError<T>(error: Int?, message: String?) :
         Resource<T>(error = error, message = message)
 
-    class Idle<T>(message: String) : Resource<T>(idle = true, message = message)
+    class Idle<T> : Resource<T>()
 
 
 }

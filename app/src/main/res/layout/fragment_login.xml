@@ -8,6 +8,8 @@
 
         <import type="android.view.View" />
 
+        <import type="com.example.android_mvvm_best_pratices.data.Resource" />
+
         <variable
             name="loginViewModel"
             type="com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.login.LoginViewModel" />
@@ -215,7 +217,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="@{loginViewModel.loginStatus.loading?View.VISIBLE:View.INVISIBLE}"
+            android:visibility="@{loginViewModel.loginStatus instanceof Resource.Loading?View.VISIBLE:View.INVISIBLE }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
