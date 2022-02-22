@@ -63,6 +63,7 @@ dependencies {
     implementation "com.squareup.moshi:moshi:$moshiVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+    implementation("com.squareup.moshi:moshi-kotlin:$moshiVersion")
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpInterceptorVersion"
     implementation("com.github.bumptech.glide:glide:$glid") {
         exclude group: "com.android.support"

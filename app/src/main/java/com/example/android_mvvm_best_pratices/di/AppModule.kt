@@ -4,6 +4,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.android_mvvm_best_pratices.SHARED_PREF_NAME
 import com.example.android_mvvm_best_pratices.data.remote.ServiceGenerator
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.task.data.remote.moshiFactories.MyKotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,8 +31,11 @@ class AppModule() {
 
     @Provides
     @Singleton
-    fun provideServiceGenerator(sharedPreferences: SharedPreferences): ServiceGenerator {
-        return ServiceGenerator(sharedPreferences)
+    fun provideServiceGenerator(
+        sharedPreferences: SharedPreferences,
+        moshi: Moshi
+    ): ServiceGenerator {
+        return ServiceGenerator(sharedPreferences, moshi)
     }
 
 
@@ -42,6 +50,10 @@ class AppModule() {
     fun provideSharedPreferencesEditor(sharedPreferences: SharedPreferences): SharedPreferences.Editor {
         return sharedPreferences.edit()
     }
+
+    @Provides
+    @Singleton
+    fun provideMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
 
 }

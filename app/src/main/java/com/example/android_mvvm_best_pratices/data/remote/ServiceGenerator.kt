@@ -24,7 +24,10 @@ private const val contentTypeValue = "application/json"
 private const val timeoutConnect = 30   //In seconds
 
 @Singleton
-class ServiceGenerator @Inject constructor(private val sharedPreferences: SharedPreferences) {
+class ServiceGenerator @Inject constructor(
+    private val sharedPreferences: SharedPreferences,
+    moshi: Moshi
+) {
 
     private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
     private val retrofit: Retrofit
@@ -57,7 +60,7 @@ class ServiceGenerator @Inject constructor(private val sharedPreferences: Shared
         val client = okHttpBuilder.build()
         retrofit = Retrofit.Builder()
             .baseUrl(TEST_BASE_URL).client(client)
-            .addConverterFactory(MoshiConverterFactory.create(getMoshi()))
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
     }
 
@@ -65,10 +68,5 @@ class ServiceGenerator @Inject constructor(private val sharedPreferences: Shared
         return retrofit.create(serviceClass)
     }
 
-    private fun getMoshi(): Moshi {
-        return Moshi.Builder()
-            .add(MyKotlinJsonAdapterFactory())
-            .add(MyStandardJsonAdapters.FACTORY)
-            .build()
-    }
+
 }

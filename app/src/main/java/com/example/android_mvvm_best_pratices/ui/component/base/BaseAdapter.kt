@@ -29,6 +29,13 @@ abstract class BaseAdapter<BINDING : ViewDataBinding, T : AdapterListItem>(var d
     }
 
     abstract fun bind(binder: BINDING, item: T)
+    override fun onBindViewHolder(
+        holder: BaseViewHolder<BINDING>,
+        position: Int,
+        payloads: MutableList<Any>
+    ) {
+        bind(holder.binder, data[position])
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<BINDING> {
         val binder = DataBindingUtil.inflate<BINDING>(
@@ -42,9 +49,9 @@ abstract class BaseAdapter<BINDING : ViewDataBinding, T : AdapterListItem>(var d
 
 }
 
-class BaseViewHolder<BINDING : ViewDataBinding>(binder: BINDING) :
+class BaseViewHolder<BINDING : ViewDataBinding>(val binder: BINDING) :
     RecyclerView.ViewHolder(binder.root)
 
 interface AdapterListItem {
-    val id: Long
+    val id: Long?
 }
