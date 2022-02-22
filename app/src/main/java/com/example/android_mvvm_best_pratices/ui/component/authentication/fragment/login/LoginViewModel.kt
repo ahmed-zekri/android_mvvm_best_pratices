@@ -26,14 +26,14 @@ class LoginViewModel @Inject constructor(
 
 
     init {
-        loginStatus.postValue(Resource.Idle())
+        loginStatus.postValue(Resource.Idle(""))
     }
 
     fun doLogin() {
         attempted = true
         loginStatus.postValue(Resource.Loading())
         if (correctInputs() != "") {
-            loginStatus.postValue(Resource.Idle())
+            loginStatus.postValue(Resource.Idle(correctInputs()))
             return
         }
 
