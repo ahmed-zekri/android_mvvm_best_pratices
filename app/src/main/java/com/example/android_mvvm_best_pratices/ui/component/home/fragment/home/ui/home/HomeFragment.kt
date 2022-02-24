@@ -31,16 +31,27 @@ class HomeFragment : BaseFragment() {
 
 
         viewModel.movies.observe(viewLifecycleOwner) {
-            if (it is Resource.Success)
-                binding.adapter = MoviesAdapter(it.data!!, R.layout.movie_item)
-            if (it is Resource.ServerError) {
-                Toast.makeText(
-                    context,
-                     it.message,
-                    Toast.LENGTH_SHORT
-                ).show()
-                requireActivity().startActivity(Intent(context, AuthenticationActivity::class.java))
-                requireActivity().finish()
+            when (it) {
+                is Resource.Success -> binding.adapter =
+                    MoviesAdapter(it.data!!, R.layout.movie_item)
+
+                is Resource.InternetError,
+                is Resource.ServerError -> {
+                    Toast.makeText(
+                        context,
+                        it.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    requireActivity().startActivity(
+                        Intent(
+                            context,
+                            AuthenticationActivity::class.java
+                        )
+                    )
+                    requireActivity().finish()
+
+                }
+
 
             }
         }
