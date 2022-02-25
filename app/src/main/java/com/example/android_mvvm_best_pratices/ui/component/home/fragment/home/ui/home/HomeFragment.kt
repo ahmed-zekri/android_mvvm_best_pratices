@@ -53,6 +53,7 @@ class HomeFragment : BaseFragment() {
                 }
 
 
+                else -> {}
             }
         }
         return binding.root
