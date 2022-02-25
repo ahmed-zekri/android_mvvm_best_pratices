@@ -20,16 +20,6 @@ class HomeFragment : BaseFragment() {
 
 
     override fun observeViewModel() {
-
-    }
-
-    override fun initViewBinding(layoutInflater: LayoutInflater): View {
-
-        binding = FragmentHomeBinding.inflate(layoutInflater)
-        binding.lifecycleOwner = viewLifecycleOwner
-
-
-
         viewModel.movies.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Success -> binding.adapter =
@@ -56,6 +46,16 @@ class HomeFragment : BaseFragment() {
                 else -> {}
             }
         }
+    }
+
+    override fun initViewBinding(layoutInflater: LayoutInflater): View {
+
+        binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding.lifecycleOwner = viewLifecycleOwner
+
+
+
+
         return binding.root
     }
 
