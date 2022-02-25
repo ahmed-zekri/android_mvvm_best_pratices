@@ -17,11 +17,11 @@ abstract class BaseAdapter<BINDING : ViewDataBinding, T : AdapterListItem>(var d
 
 
     override fun onBindViewHolder(holder: BaseViewHolder<BINDING>, position: Int) {
-
+        bind(holder.binder, data[position])
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateDate(data: List<T>) {
+    fun updateData(data: List<T>) {
         this.data = data
         notifyDataSetChanged()
 
@@ -29,13 +29,7 @@ abstract class BaseAdapter<BINDING : ViewDataBinding, T : AdapterListItem>(var d
     }
 
     abstract fun bind(binder: BINDING, item: T)
-    override fun onBindViewHolder(
-        holder: BaseViewHolder<BINDING>,
-        position: Int,
-        payloads: MutableList<Any>
-    ) {
-        bind(holder.binder, data[position])
-    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<BINDING> {
         val binder = DataBindingUtil.inflate<BINDING>(
