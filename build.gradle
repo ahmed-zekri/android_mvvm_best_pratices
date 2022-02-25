@@ -27,6 +27,7 @@ ext {
     junitVersion = '5.7.0'
     androidXJunitVersion = '1.1.4-alpha04'
     assertjVersion = '3.19.0'
+    room_version = '2.4.2'
     coreTestingVersion = '2.1.0'
     espressoIntentsVersion = '3.3.0'
     espressoVersion = '3.3.0'

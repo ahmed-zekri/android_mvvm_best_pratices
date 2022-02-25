@@ -2,13 +2,14 @@ package com.example.android_mvvm_best_pratices.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import com.example.android_mvvm_best_pratices.DATABASE_NAME
 import com.example.android_mvvm_best_pratices.SHARED_PREF_NAME
 import com.example.android_mvvm_best_pratices.data.remote.ServiceGenerator
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonAdapter
+import com.example.android_mvvm_best_pratices.data.room.database.Database
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import com.task.data.remote.moshiFactories.MyKotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +21,7 @@ import kotlin.coroutines.CoroutineContext
 
 @Module
 @InstallIn(SingletonComponent::class)
-class AppModule() {
+class AppModule {
 
 
     @Provides
@@ -55,5 +56,8 @@ class AppModule() {
     @Singleton
     fun provideMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
-
+    @Provides
+    @Singleton
+    fun provideDatabase(@ApplicationContext context: Context): Database =
+        Room.databaseBuilder(context, Database::class.java, DATABASE_NAME).build()
 }

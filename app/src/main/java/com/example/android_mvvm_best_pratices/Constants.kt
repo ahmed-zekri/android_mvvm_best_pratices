@@ -8,3 +8,4 @@ const val ERROR_DELIMITER = ";;"
 const val TAB_COUNT = 2
 const val SHARED_PREF_NAME = "my_prefs"
 const val TOKEN_KEY = "token"
+const val DATABASE_NAME = "app_database"

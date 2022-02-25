@@ -6,6 +6,7 @@ import com.example.android_mvvm_best_pratices.data.Resource
 
 import com.example.android_mvvm_best_pratices.data.dto.Movie
 import com.example.android_mvvm_best_pratices.data.repositories.movie.DataRepositoryMovieImpl
+import com.example.android_mvvm_best_pratices.data.room.database.Database
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -15,8 +16,9 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val repositoryMovieImpl: DataRepositoryMovieImpl,
+    private val database: Database
 
-    ) :
+) :
     BaseViewModel() {
 
 

@@ -1,9 +1,14 @@
 package com.example.android_mvvm_best_pratices.data.dto
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.android_mvvm_best_pratices.ui.component.base.AdapterListItem
 
+@Entity(tableName = "movie")
 data class Movie(
-    override var id: Long? = null, var episodes: Int?,
+    @PrimaryKey(autoGenerate = true)
+    override var id: Int?,
+    var episodes: Int?,
 
     var title: String?,
     var rating: Float?,

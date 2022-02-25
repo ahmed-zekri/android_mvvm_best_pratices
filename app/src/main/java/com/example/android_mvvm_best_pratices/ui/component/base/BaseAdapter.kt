@@ -53,5 +53,5 @@ class BaseViewHolder<BINDING : ViewDataBinding>(val binder: BINDING) :
     RecyclerView.ViewHolder(binder.root)
 
 interface AdapterListItem {
-    val id: Long?
+    val id: Int?
 }
