@@ -8,16 +8,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class BaseAdapter<BINDING : ViewDataBinding, T : AdapterListItem>(var data: List<T>) :
+abstract class BaseAdapter<BINDING : ViewDataBinding, T : AdapterListItem>(var data: List<T>?) :
     RecyclerView.Adapter<BaseViewHolder<BINDING>>() {
     @get:LayoutRes
     abstract val layoutId: Int
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = data?.size ?: 0
 
 
     override fun onBindViewHolder(holder: BaseViewHolder<BINDING>, position: Int) {
-        bind(holder.binder, data[position])
+        bind(holder.binder, data?.get(position))
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -28,7 +28,7 @@ abstract class BaseAdapter<BINDING : ViewDataBinding, T : AdapterListItem>(var d
 
     }
 
-    abstract fun bind(binder: BINDING, item: T)
+    abstract fun bind(binder: BINDING, item: T?)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<BINDING> {

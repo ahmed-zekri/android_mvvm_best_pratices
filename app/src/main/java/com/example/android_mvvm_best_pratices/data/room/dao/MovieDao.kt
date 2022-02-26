@@ -1,6 +1,5 @@
 package com.example.android_mvvm_best_pratices.data.room.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.IGNORE
@@ -13,5 +12,8 @@ interface MovieDao {
     suspend fun insertMovie(movie: Movie)
 
     @Query("SELECT * FROM MOVIE ORDER BY id asc")
-    fun getAllMovies(): LiveData<List<Movie>>
+    suspend fun getAllMovies(): List<Movie>
+
+    @Query("SELECT COUNT() FROM MOVIE WHERE title=:title")
+    suspend fun count(title: String?): Int
 }

@@ -20,11 +20,15 @@ class HomeFragment : BaseFragment() {
 
 
     override fun observeViewModel() {
+
         viewModel.movies.observe(viewLifecycleOwner) {
             when (it) {
-                is Resource.Success -> binding.adapter =
-                    MoviesAdapter(it.data!!, R.layout.movie_item)
+                is Resource.Success -> {
+                    binding.adapter =
+                        MoviesAdapter(it.data!!, R.layout.movie_item)
+                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
 
+                }
                 is Resource.InternetError,
                 is Resource.ServerError -> {
                     Toast.makeText(
@@ -53,7 +57,7 @@ class HomeFragment : BaseFragment() {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         binding.lifecycleOwner = viewLifecycleOwner
 
-
+        binding.viewModel=viewModel
 
 
         return binding.root

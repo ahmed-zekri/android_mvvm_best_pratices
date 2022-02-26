@@ -1,5 +1,6 @@
 package com.example.android_mvvm_best_pratices.data.remote.movies
 
+import com.example.android_mvvm_best_pratices.DATA_FETCHED_FROM_SERVER
 import com.example.android_mvvm_best_pratices.ERROR_DELIMITER
 import com.example.android_mvvm_best_pratices.NO_INTERNET_CONNECTION_ERROR
 import com.example.android_mvvm_best_pratices.data.Resource
@@ -14,7 +15,10 @@ class RemoteDataMovies @Inject constructor(serviceGenerator: ServiceGenerator) :
 
         return when (val response = processCall { movieService.getMovies() }) {
 
-            is List<*> -> Resource.Success(data = response as List<Movie>)
+            is List<*> -> Resource.Success(
+                data = response as List<Movie>,
+                message = DATA_FETCHED_FROM_SERVER
+            )
             is Int -> Resource.InternetError(
                 message = NO_INTERNET_CONNECTION_ERROR,
                 error = response

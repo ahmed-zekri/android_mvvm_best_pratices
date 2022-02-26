@@ -1,5 +1,6 @@
 package com.example.android_mvvm_best_pratices.data.remote.authentication
 
+import com.example.android_mvvm_best_pratices.DATA_FETCHED_FROM_SERVER
 import com.example.android_mvvm_best_pratices.ERROR_DELIMITER
 import com.example.android_mvvm_best_pratices.NO_INTERNET_CONNECTION_ERROR
 import com.example.android_mvvm_best_pratices.data.Resource
@@ -24,7 +25,7 @@ constructor(serviceGenerator: ServiceGenerator) : RemoteDataSourceAuthentication
                 registerRequest
             )
         }) {
-            is User -> Resource.Success(data = response)
+            is User -> Resource.Success(data = response, message = DATA_FETCHED_FROM_SERVER)
             is Int -> Resource.InternetError(
                 error = response,
                 message = NO_INTERNET_CONNECTION_ERROR
@@ -48,7 +49,10 @@ constructor(serviceGenerator: ServiceGenerator) : RemoteDataSourceAuthentication
                 error = response,
                 message = NO_INTERNET_CONNECTION_ERROR
             )
-            is LoginResponse -> Resource.Success(data = response)
+            is LoginResponse -> Resource.Success(
+                data = response,
+                message = DATA_FETCHED_FROM_SERVER
+            )
             else -> {
                 response as String
                 Resource.ServerError(

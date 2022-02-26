@@ -11,7 +11,7 @@ sealed class Resource<T>(
 
     ) {
 
-    class Success<T>(data: T) : Resource<T>(data = data)
+    class Success<T>(data: T, message: String) : Resource<T>(data = data, message = message)
     class Loading<T> : Resource<T>()
     class InternetError<T>(error: Int?, message: String?) :
         Resource<T>(error = error, message = message)

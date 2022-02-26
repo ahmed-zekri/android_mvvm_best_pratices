@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.android_mvvm_best_pratices.DATABASE_NAME
 import com.example.android_mvvm_best_pratices.SHARED_PREF_NAME
 import com.example.android_mvvm_best_pratices.data.remote.ServiceGenerator
+import com.example.android_mvvm_best_pratices.data.room.dao.MovieDao
 import com.example.android_mvvm_best_pratices.data.room.database.Database
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -60,4 +61,8 @@ class AppModule {
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): Database =
         Room.databaseBuilder(context, Database::class.java, DATABASE_NAME).build()
+
+    @Provides
+    @Singleton
+    fun provideDao(database: Database): MovieDao = database.movieDao
 }

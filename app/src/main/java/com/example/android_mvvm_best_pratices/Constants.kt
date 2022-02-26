@@ -9,3 +9,5 @@ const val TAB_COUNT = 2
 const val SHARED_PREF_NAME = "my_prefs"
 const val TOKEN_KEY = "token"
 const val DATABASE_NAME = "app_database"
+const val DATA_FETCHED_FROM_SERVER = "Data received from server"
+const val DATA_RETRIEVED_FROM_LOCAL_DATABASE = "Data received from sqlite"
