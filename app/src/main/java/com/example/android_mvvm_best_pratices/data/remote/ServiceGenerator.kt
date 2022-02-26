@@ -19,7 +19,7 @@ import javax.inject.Singleton
 private const val timeoutRead = 30   //In seconds
 private const val contentType = "Content-Type"
 private const val contentTypeValue = "application/json"
-private const val timeoutConnect = 10   //In seconds
+private const val timeoutConnect = 2   //In seconds
 
 @Singleton
 class ServiceGenerator @Inject constructor(

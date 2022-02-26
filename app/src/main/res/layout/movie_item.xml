@@ -38,7 +38,7 @@
 
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/image_view_favourite"
+                android:id="@+id/image_view_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -58,7 +58,7 @@
                 android:text="@{movie.title}"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/text_view_date"
-                app:layout_constraintEnd_toStartOf="@+id/image_view_favourite"
+                app:layout_constraintEnd_toStartOf="@+id/image_view_delete"
                 app:layout_constraintStart_toEndOf="@+id/image_view_movie_image"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="The Shawshank Redemption" />

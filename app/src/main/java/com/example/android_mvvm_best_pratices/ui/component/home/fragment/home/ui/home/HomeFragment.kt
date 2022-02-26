@@ -17,15 +17,16 @@ class HomeFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
-
+    private var adapter: MoviesAdapter = MoviesAdapter(null, R.layout.movie_item)
 
     override fun observeViewModel() {
+        viewModel.fetchMovies()
 
         viewModel.movies.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Success -> {
-                    binding.adapter =
-                        MoviesAdapter(it.data!!, R.layout.movie_item)
+                    adapter.updateData(it.data)
+
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
 
                 }
@@ -57,9 +58,10 @@ class HomeFragment : BaseFragment() {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.viewModel=viewModel
+        binding.viewModel = viewModel
 
-
+        binding.adapter = adapter
+        adapter.onItemDeletedListener = viewModel.onItemDeletedListener
         return binding.root
     }
 

@@ -16,4 +16,7 @@ interface MovieDao {
 
     @Query("SELECT COUNT() FROM MOVIE WHERE title=:title")
     suspend fun count(title: String?): Int
+
+    @Query("DELETE  FROM MOVIE WHERE title=:title")
+    suspend fun deleteMovie(title: String?): Int
 }

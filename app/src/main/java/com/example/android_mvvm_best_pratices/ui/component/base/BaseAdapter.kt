@@ -21,7 +21,7 @@ abstract class BaseAdapter<BINDING : ViewDataBinding, T : AdapterListItem>(var d
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(data: List<T>) {
+    fun updateData(data: List<T>?) {
         this.data = data
         notifyDataSetChanged()
 

@@ -19,21 +19,28 @@ class HomeViewModel @Inject constructor(
     private val repositoryMovieImpl: DataRepositoryMovieImpl,
     private val movieDao: MovieDao
 
+
 ) :
     BaseViewModel() {
-
-
+    val onItemDeletedListener = object : MoviesAdapter.OnItemDeletedListener {
+        override fun onDeleted(title: String?) {
+            viewModelScope.launch {
+                movieDao.deleteMovie(title)
+               fetchMovies()
+            }
+        }
+    }
     val movies = MutableLiveData<Resource<List<Movie>>>()
 
-    init {
+    fun fetchMovies() {
         movies.postValue(Resource.Loading())
         viewModelScope.launch {
 
             repositoryMovieImpl.getMovies().collect {
-                if (it is Resource.Success) {
+                if (it is Resource.Success)
 
                     updateDatabase(it.data)
-                }
+
 
                 movies.postValue(
                     if (it.error != NETWORK_ERROR) it else Resource.Success(
@@ -44,7 +51,6 @@ class HomeViewModel @Inject constructor(
 
             }
         }
-
 
     }
 

@@ -6,10 +6,23 @@ import com.example.android_mvvm_best_pratices.ui.component.base.BaseAdapter
 
 class MoviesAdapter constructor(movies: List<Movie>?, override val layoutId: Int) :
     BaseAdapter<MovieItemBinding, Movie>(movies) {
+
     override fun bind(binder: MovieItemBinding, item: Movie?) {
         binder.apply {
 
             movie = item
+            imageViewDelete.setOnClickListener {
+                onItemDeletedListener?.onDeleted(movie?.title)
+
+            }
         }
     }
+
+    interface OnItemDeletedListener {
+        fun onDeleted(title: String?)
+    }
+
+     var onItemDeletedListener: OnItemDeletedListener? = null
+
+
 }
