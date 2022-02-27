@@ -1,5 +1,4 @@
 package com.example.android_mvvm_best_pratices.ui.component.base
-
 import com.example.android_mvvm_best_pratices.ERROR_DELIMITER
 import com.example.android_mvvm_best_pratices.data.error.NETWORK_ERROR
 import com.example.android_mvvm_best_pratices.data.remote.movies.APIMoviesService

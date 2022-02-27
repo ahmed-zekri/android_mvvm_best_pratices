@@ -65,4 +65,6 @@ class AppModule {
     @Provides
     @Singleton
     fun provideDao(database: Database): MovieDao = database.movieDao
+
+
 }

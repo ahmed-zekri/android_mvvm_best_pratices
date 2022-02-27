@@ -12,6 +12,11 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/add_movie"
+        android:name="com.example.android_mvvm_best_pratices.ui.component.home.fragment.home.ui.addMovie.AddMovieFragment"
+        android:label="@string/add_movie"
+        tools:layout="@layout/fragment_add_movie" />
+    <fragment
         android:id="@+id/nav_about"
         android:name="com.example.android_mvvm_best_pratices.ui.component.home.fragment.home.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
