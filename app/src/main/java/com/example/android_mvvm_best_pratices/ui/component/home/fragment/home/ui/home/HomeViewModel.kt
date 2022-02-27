@@ -22,14 +22,19 @@ class HomeViewModel @Inject constructor(
 
 ) :
     BaseViewModel() {
-    val onItemDeletedListener = object : MoviesAdapter.OnItemDeletedListener {
-        override fun onDeleted(title: String?) {
+
+    val itemDeletedListener = object : ((String?) -> Unit?) {
+
+
+        override fun invoke(p1: String?) {
             viewModelScope.launch {
-                movieDao.deleteMovie(title)
-               fetchMovies()
+                movieDao.deleteMovie(p1)
+                fetchMovies()
             }
         }
     }
+
+
     val movies = MutableLiveData<Resource<List<Movie>>>()
 
     fun fetchMovies() {

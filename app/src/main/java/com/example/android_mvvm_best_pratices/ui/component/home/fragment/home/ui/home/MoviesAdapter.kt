@@ -12,17 +12,14 @@ class MoviesAdapter constructor(movies: List<Movie>?, override val layoutId: Int
 
             movie = item
             imageViewDelete.setOnClickListener {
-                onItemDeletedListener?.onDeleted(movie?.title)
+                itemDeleted.invoke(movie?.title)
 
             }
         }
     }
 
-    interface OnItemDeletedListener {
-        fun onDeleted(title: String?)
-    }
 
-     var onItemDeletedListener: OnItemDeletedListener? = null
+    var itemDeleted: (title: String?) -> Unit? = {}
 
 
 }

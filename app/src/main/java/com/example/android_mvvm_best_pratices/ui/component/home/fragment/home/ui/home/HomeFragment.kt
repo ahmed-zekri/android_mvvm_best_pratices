@@ -25,7 +25,7 @@ class HomeFragment : BaseFragment() {
         viewModel.movies.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Success -> {
-                    adapter.updateData(it.data)
+                    adapter.updateData(it.data!!)
 
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
 
@@ -61,7 +61,10 @@ class HomeFragment : BaseFragment() {
         binding.viewModel = viewModel
 
         binding.adapter = adapter
-        adapter.onItemDeletedListener = viewModel.onItemDeletedListener
+        adapter.itemDeleted = viewModel.itemDeletedListener
+
+
+
         return binding.root
     }
 
