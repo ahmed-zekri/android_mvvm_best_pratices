@@ -1,6 +1,6 @@
 package com.example.android_mvvm_best_pratices.ui.component.home.fragment.home.ui.home
 
-import com.example.android_mvvm_best_pratices.data.dto.Movie
+import com.example.android_mvvm_best_pratices.domain.model.movie.Movie
 import com.example.android_mvvm_best_pratices.databinding.MovieItemBinding
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseAdapter
 

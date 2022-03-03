@@ -1,8 +1,7 @@
 package com.example.android_mvvm_best_pratices.data.remote.movies
 
-import com.example.android_mvvm_best_pratices.data.dto.Movie
+import com.example.android_mvvm_best_pratices.domain.model.movie.Movie
 import retrofit2.Response
-import retrofit2.http.Field
 import retrofit2.http.GET
 
 interface APIMoviesService {

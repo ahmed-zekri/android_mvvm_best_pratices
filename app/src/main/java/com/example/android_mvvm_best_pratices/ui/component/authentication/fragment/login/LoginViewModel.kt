@@ -5,11 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.android_mvvm_best_pratices.ROLES_KEY
 import com.example.android_mvvm_best_pratices.TOKEN_KEY
-import com.example.android_mvvm_best_pratices.data.repositories.user.DataRepositoryUserUserImpl
+import com.example.android_mvvm_best_pratices.data.repositories.user.DataRepositoryUserImpl
 import com.example.android_mvvm_best_pratices.data.Resource
 import com.example.android_mvvm_best_pratices.data.dto.authentication.LoginRequest
 import com.example.android_mvvm_best_pratices.data.dto.authentication.LoginResponse
-import com.example.android_mvvm_best_pratices.data.dto.user.User
 import com.example.android_mvvm_best_pratices.ui.component.base.AuthenticationBaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -19,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val dataRepositoryUserImpl: DataRepositoryUserUserImpl,
+    private val dataRepositoryUserImpl: DataRepositoryUserImpl,
     private val sharedPreferencesEditor: SharedPreferences.Editor
 ) :
     AuthenticationBaseViewModel() {

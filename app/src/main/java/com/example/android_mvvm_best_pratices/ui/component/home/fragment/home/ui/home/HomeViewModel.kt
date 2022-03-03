@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.android_mvvm_best_pratices.DATA_RETRIEVED_FROM_LOCAL_DATABASE
 import com.example.android_mvvm_best_pratices.data.Resource
-import com.example.android_mvvm_best_pratices.data.dto.Movie
+import com.example.android_mvvm_best_pratices.domain.model.movie.Movie
 import com.example.android_mvvm_best_pratices.data.error.NETWORK_ERROR
 import com.example.android_mvvm_best_pratices.data.repositories.movie.DataRepositoryMovieImpl
 import com.example.android_mvvm_best_pratices.data.room.dao.MovieDao

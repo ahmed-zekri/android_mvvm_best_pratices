@@ -1,4 +1,4 @@
-package com.example.android_mvvm_best_pratices.data.dto
+package com.example.android_mvvm_best_pratices.domain.model.movie
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

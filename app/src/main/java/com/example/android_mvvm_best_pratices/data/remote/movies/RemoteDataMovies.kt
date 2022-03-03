@@ -4,8 +4,7 @@ import com.example.android_mvvm_best_pratices.DATA_FETCHED_FROM_SERVER
 import com.example.android_mvvm_best_pratices.ERROR_DELIMITER
 import com.example.android_mvvm_best_pratices.NO_INTERNET_CONNECTION_ERROR
 import com.example.android_mvvm_best_pratices.data.Resource
-import com.example.android_mvvm_best_pratices.data.dto.Movie
-import com.example.android_mvvm_best_pratices.data.remote.ServiceGenerator
+import com.example.android_mvvm_best_pratices.domain.model.movie.Movie
 import com.example.android_mvvm_best_pratices.ui.component.base.BaseRemoteData
 import javax.inject.Inject
 

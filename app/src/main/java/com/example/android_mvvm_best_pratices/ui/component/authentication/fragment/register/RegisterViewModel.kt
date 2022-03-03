@@ -3,10 +3,10 @@ package com.example.android_mvvm_best_pratices.ui.component.authentication.fragm
 import android.widget.CompoundButton
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.android_mvvm_best_pratices.data.repositories.user.DataRepositoryUserUserImpl
+import com.example.android_mvvm_best_pratices.data.repositories.user.DataRepositoryUserImpl
 import com.example.android_mvvm_best_pratices.data.Resource
 import com.example.android_mvvm_best_pratices.data.dto.authentication.RegisterRequest
-import com.example.android_mvvm_best_pratices.data.dto.user.User
+import com.example.android_mvvm_best_pratices.domain.model.user.User
 import com.example.android_mvvm_best_pratices.ui.component.base.AuthenticationBaseViewModel
 import com.example.android_mvvm_best_pratices.utils.RegexUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val dataRepositoryUserImpl: DataRepositoryUserUserImpl) :
+class RegisterViewModel @Inject constructor(private val dataRepositoryUserImpl: DataRepositoryUserImpl) :
     AuthenticationBaseViewModel() {
 
 

@@ -1,4 +1,4 @@
-package com.example.android_mvvm_best_pratices.usecase.errors
+package com.example.android_mvvm_best_pratices.domain.usecase.errors
 
 import com.example.android_mvvm_best_pratices.data.error.mapper.ErrorMapper
 import javax.inject.Inject

@@ -1,8 +1,9 @@
 package com.example.android_mvvm_best_pratices.data.repositories.movie
 
 import com.example.android_mvvm_best_pratices.data.Resource
-import com.example.android_mvvm_best_pratices.data.dto.Movie
+import com.example.android_mvvm_best_pratices.domain.model.movie.Movie
 import com.example.android_mvvm_best_pratices.data.remote.movies.RemoteDataMovies
+import com.example.android_mvvm_best_pratices.domain.repositories.movie.DataRepositoryMovieSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
