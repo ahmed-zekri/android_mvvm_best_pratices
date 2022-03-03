@@ -15,7 +15,7 @@ interface APIAuthService {
 
 
     @POST("auth/signin")
-    suspend fun login(@Body loginRequest: LoginRequest): Response<LoginResponse>
+    suspend fun login(@Body loginRequest: LoginRequest?): Response<LoginResponse>
 
 
 }

@@ -11,5 +11,5 @@ import retrofit2.Response
 interface DataRepositoryUserSource {
 
     suspend fun doRegister(registerRequest: RegisterRequest): Response<User>
-    suspend fun doLogin(loginRequest: LoginRequest): Response<LoginResponse>
+    suspend fun doLogin(loginRequest: LoginRequest?): Response<LoginResponse>
 }

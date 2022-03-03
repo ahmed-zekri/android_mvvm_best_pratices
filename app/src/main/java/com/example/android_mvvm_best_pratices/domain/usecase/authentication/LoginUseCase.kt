@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(val dataRepositoryUserImpl: DataRepositoryUserImpl)
 
-operator fun LoginUseCase.invoke(loginRequest: LoginRequest) = flow {
+operator fun LoginUseCase.invoke(loginRequest: LoginRequest?) = flow {
     try {
         emit(Resource.Loading())
 

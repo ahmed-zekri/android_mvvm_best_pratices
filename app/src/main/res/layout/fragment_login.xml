@@ -12,7 +12,7 @@
 
         <variable
             name="loginViewModel"
-            type="com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.login.LoginViewModel" />
+            type="com.example.android_mvvm_best_pratices.presentation.login.LoginViewModel" />
     </data>
 
 

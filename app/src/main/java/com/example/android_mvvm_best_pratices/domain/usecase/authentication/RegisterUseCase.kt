@@ -5,16 +5,17 @@ import com.example.android_mvvm_best_pratices.data.dto.authentication.RegisterRe
 import com.example.android_mvvm_best_pratices.data.error.ERROR_OCCURRED
 import com.example.android_mvvm_best_pratices.data.error.SERVER_ERROR
 import com.example.android_mvvm_best_pratices.data.remote.authentication.APIAuthService
+import com.example.android_mvvm_best_pratices.data.repositories.user.DataRepositoryUserImpl
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-open class RegisterUseCase @Inject constructor(val apiAuthService: APIAuthService) {
+class RegisterUseCase @Inject constructor(private val dataRepositoryUserImpl: DataRepositoryUserImpl) {
     operator fun RegisterUseCase.invoke(registerRequest: RegisterRequest) = flow {
         try {
             emit(Resource.Loading())
-            emit(Resource.Success(apiAuthService.register(registerRequest)))
+            emit(Resource.Success(dataRepositoryUserImpl.doRegister(registerRequest)))
         } catch (e: IOException) {
             emit(Resource.Error(message = SERVER_ERROR))
         } catch (e: HttpException) {
@@ -24,11 +25,6 @@ open class RegisterUseCase @Inject constructor(val apiAuthService: APIAuthServic
 
 
     }
-
-    open fun a() {}
-}
-class b : RegisterUseCase() {
-    override fun a(){}
 
 
 }

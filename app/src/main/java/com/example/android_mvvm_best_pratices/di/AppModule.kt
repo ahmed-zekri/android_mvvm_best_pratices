@@ -39,15 +39,6 @@ class AppModule {
         return Dispatchers.IO
     }
 
-    @Provides
-    @Singleton
-    fun provideServiceGenerator(
-        sharedPreferences: SharedPreferences,
-        moshi: Moshi
-    ): ServiceGenerator {
-        return ServiceGenerator(sharedPreferences, moshi)
-    }
-
 
     @Provides
     @Singleton

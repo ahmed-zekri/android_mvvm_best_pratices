@@ -14,7 +14,7 @@ class DataRepositoryUserImpl @Inject constructor(
         apiAuthService.register(registerRequest)
 
 
-    override suspend fun doLogin(loginRequest: LoginRequest) = apiAuthService.login(loginRequest)
+    override suspend fun doLogin(loginRequest: LoginRequest?) = apiAuthService.login(loginRequest)
 
 
 }
