@@ -1,6 +1,5 @@
 package com.example.android_mvvm_best_pratices.di
 
-import com.example.android_mvvm_best_pratices.domain.repositories.user.DataRepositoryUserSource
 import com.example.android_mvvm_best_pratices.data.remote.movies.RemoteDataSourceMovies
 import com.example.android_mvvm_best_pratices.domain.repositories.movie.DataRepositoryMovieSource
 import dagger.Binds
@@ -12,14 +11,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class DataModule {
-
-    @Binds
-    @Singleton
-    abstract fun provideRemoteDataAuthentication(remoteDataSourceAuthentication: RemoteDataSourceAuthentication): RemoteDataSourceAuthentication
-
-    @Binds
-    @Singleton
-    abstract fun provideRemoteRepositoryAuthentication(dataRepositoryUserSource: DataRepositoryUserSource): DataRepositoryUserSource
 
 
     @Binds

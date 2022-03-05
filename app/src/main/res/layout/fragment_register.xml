@@ -8,7 +8,7 @@
 
         <variable
             name="registerViewModel"
-            type="com.example.android_mvvm_best_pratices.ui.component.authentication.fragment.register.RegisterViewModel" />
+            type="com.example.android_mvvm_best_pratices.presentation.register.RegisterViewModel" />
 
         <import type="com.example.android_mvvm_best_pratices.data.Resource" />
 

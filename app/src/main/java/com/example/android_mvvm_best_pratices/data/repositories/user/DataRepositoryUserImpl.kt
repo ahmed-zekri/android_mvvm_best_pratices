@@ -1,7 +1,7 @@
 package com.example.android_mvvm_best_pratices.data.repositories.user
 
-import com.example.android_mvvm_best_pratices.data.dto.authentication.LoginRequest
-import com.example.android_mvvm_best_pratices.data.dto.authentication.RegisterRequest
+import com.example.android_mvvm_best_pratices.data.remote.dto.authentication.LoginRequest
+import com.example.android_mvvm_best_pratices.data.remote.dto.authentication.RegisterRequest
 import com.example.android_mvvm_best_pratices.data.remote.authentication.APIAuthService
 import com.example.android_mvvm_best_pratices.domain.repositories.user.DataRepositoryUserSource
 import javax.inject.Inject

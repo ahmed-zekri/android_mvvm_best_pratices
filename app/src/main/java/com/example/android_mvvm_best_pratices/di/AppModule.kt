@@ -8,6 +8,10 @@ import com.example.android_mvvm_best_pratices.data.remote.authentication.APIAuth
 import com.example.android_mvvm_best_pratices.data.remote.movies.APIMoviesService
 import com.example.android_mvvm_best_pratices.data.room.dao.MovieDao
 import com.example.android_mvvm_best_pratices.data.room.database.Database
+import com.example.android_mvvm_best_pratices.domain.repositories.user.DataRepositoryUserSource
+import com.example.android_mvvm_best_pratices.domain.usecase.authentication.LoginUseCase
+import com.example.android_mvvm_best_pratices.domain.usecase.authentication.RegisterUseCase
+import com.example.android_mvvm_best_pratices.domain.usecase.authentication.SaveAtUseCase
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -123,6 +127,21 @@ class AppModule {
     @Singleton
     fun provideMovieApi(retrofit: Retrofit): APIMoviesService =
         retrofit.create(APIMoviesService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideSaveAtUseCase(sharedPreferencesEditor: SharedPreferences.Editor) =
+        SaveAtUseCase(sharedPreferencesEditor)
+
+    @Provides
+    @Singleton
+    fun provideLoginUseCase(dataRepositoryUserSource: DataRepositoryUserSource) =
+        LoginUseCase(dataRepositoryUserSource)
+
+    @Provides
+    @Singleton
+    fun provideRegisterUseCase(dataRepositoryUserSource: DataRepositoryUserSource) =
+        RegisterUseCase(dataRepositoryUserSource)
 
 
 }
